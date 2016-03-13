@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "1/Consent To Participate.swift"
+            timestampString = "478891644.527782"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "Consent_To_Participate"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "_.Consent_To_Participate.label1.setter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UILabel&gt;"
+                  moduleName = "1"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Keshav/Developer/Find%20Your%20Focus/1/1/Consent%20To%20Participate.swift"
+                  timestampString = "478891243.212384"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "_.Consent_To_Participate.label1.materializeForSet : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UILabel&gt;"
+                  moduleName = "1"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Keshav/Developer/Find%20Your%20Focus/1/1/Consent%20To%20Participate.swift"
+                  timestampString = "478891243.21253"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "_.Consent_To_Participate.init (_.Consent_To_Participate.Type)(nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.NSBundle&gt;) -&gt; _.Consent_To_Participate"
+                  moduleName = "1"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Keshav/Developer/Find%20Your%20Focus/1/1/Consent%20To%20Participate.swift"
+                  timestampString = "478891243.21267"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "70">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "_.Consent_To_Participate.init (_.Consent_To_Participate.Type)(coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;_.Consent_To_Participate&gt;"
+                  moduleName = "1"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Keshav/Developer/Find%20Your%20Focus/1/1/Consent%20To%20Participate.swift"
+                  timestampString = "478891243.213742"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "31">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "1/SleepSchedule.swift"
+            timestampString = "479123198.916488"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "SleepSchedule"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "_.SleepSchedule.wakeUpTimeSelect.getter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UIDatePicker&gt;"
+                  moduleName = "1"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Keshav/Developer/Find%20Your%20Focus/1/1/SleepSchedule.swift"
+                  timestampString = "479123198.919079"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "_.SleepSchedule.wakeUpTimeSelect.setter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UIDatePicker&gt;"
+                  moduleName = "1"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Keshav/Developer/Find%20Your%20Focus/1/1/SleepSchedule.swift"
+                  timestampString = "479123198.919248"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "_.SleepSchedule.wakeUpTimeSelect.materializeForSet : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UIDatePicker&gt;"
+                  moduleName = "1"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Keshav/Developer/Find%20Your%20Focus/1/1/SleepSchedule.swift"
+                  timestampString = "479123198.919359"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "_.SleepSchedule.init (_.SleepSchedule.Type)(nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.NSBundle&gt;) -&gt; _.SleepSchedule"
+                  moduleName = "1"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Keshav/Developer/Find%20Your%20Focus/1/1/SleepSchedule.swift"
+                  timestampString = "479123198.919459"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "224">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "_.SleepSchedule.init (_.SleepSchedule.Type)(coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;_.SleepSchedule&gt;"
+                  moduleName = "1"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Keshav/Developer/Find%20Your%20Focus/1/1/SleepSchedule.swift"
+                  timestampString = "479123198.919597"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "138">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
