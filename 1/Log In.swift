@@ -23,6 +23,8 @@ class Log_In: UIViewController {
         
         if email.text == "" || password.text == "" {
             
+            
+            
             let alert = UIAlertController(title: "Error in Form ", message: "Pleas enter a valid email and password.", preferredStyle: UIAlertControllerStyle.Alert)
             //alert.addAction(UIAlertAction(title: "OK", style: .Destructive, handler: nil))
             alert.addAction(UIAlertAction(title: "OK", style: .Destructive, handler: { (action)  -> Void in

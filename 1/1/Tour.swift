@@ -52,27 +52,9 @@ class Tour: UIViewController {
         V4Frame.origin.x = 3 * self.view.frame.width
         V4.view.frame = V4Frame
         
+        let navigationBarHeight: CGFloat = self.navigationController!.navigationBar.frame.height
         
-        self.scrollView.contentSize = CGSizeMake(self.view.frame.width * 4, self.view.frame.size.height)
-        
-
-        
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        self.scrollView.contentSize = CGSizeMake(self.view.frame.width * 4, self.view.frame.size.height - navigationBarHeight)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

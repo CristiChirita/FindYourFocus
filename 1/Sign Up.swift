@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 
 class Sign_Up: UIViewController, UITextFieldDelegate {
 
@@ -15,13 +14,23 @@ class Sign_Up: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var emailIcon: UIButton!
     @IBOutlet weak var passwordIcon: UIButton!
-    var myRootRef = Firebase(url: "https://testyourfocus.firebaseio.com")
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.email.delegate = self
         self.password.delegate = self
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil);
+    }
+    
+    func keyboardWillShow(sender: NSNotification) {
+        self.view.frame.origin.y = -75
+    }
+    
+    func keyboardWillHide(sender: NSNotification) {
+        self.view.frame.origin.y = 0
     }
     
     func alertMessage(title: String, message: String) {
@@ -54,25 +63,7 @@ class Sign_Up: UIViewController, UITextFieldDelegate {
             }
             
         }
-        myRootRef.createUser(email.text, password: password.text, withValueCompletionBlock: {
-          error, result in
-            if error != nil {
-            alertMessage("Error in Form", message: "Please enter a valid email and password.")            }
-            else { let uid = result["uid"] as? String}
-        })
-        myRootRef.authUser(email, password: password,
-            withCompletionBlock: { error, authData in
-                if error != nil {
-                    // There was an error logging in to this account
-                } else {
-                    // We are now logged in
-                    let newUser = [
-                        "provider" = authData.provider,
-                        "dispayName" = authData.providerData["displayName"] as? NSString as? String
-                    ]
-                    myRootRef.childByAppendingPath("Users").childByAppendingPath(authData.uid).childByAppendingPath("Data").setValue(newUser)
-                }
-        })    }
+    }
     
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {

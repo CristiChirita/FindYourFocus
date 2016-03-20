@@ -24,8 +24,16 @@ class SleepSchedule: UIViewController {
     
     @IBOutlet weak var question: UILabel!
     
+    @IBOutlet weak var datePickerLabel: UILabel!
+    
     let wakeUpTap = UITapGestureRecognizer()
     let sleepTap = UITapGestureRecognizer()
+    
+    let calendar: NSCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+    let comps: NSDateComponents = NSDateComponents()
+    
+    let dateFormatter = NSDateFormatter()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +41,7 @@ class SleepSchedule: UIViewController {
         // Do any additional setup after loading the view.
         
         
-        note.text = "We will not send any notifications within one hour of your usual waking or sleeping times."
+        note.text = "Note: We will not send any notifications within one hour of your usual waking or sleeping times."
         
         question.text = "What times of the day are you usually awake?"
         
@@ -45,35 +53,37 @@ class SleepSchedule: UIViewController {
         sleep.addGestureRecognizer(sleepTap)
         sleep.userInteractionEnabled = true
         
+        dateFormatter.dateFormat = "hh:mm a"
+        
+//        wakeUp.text = dateFormatter.stringFromDate(wakeUpTimeSelect.date)
+//        sleep.text = dateFormatter.stringFromDate(sleepTimeSelect.date)
+        
     }
     
     
     @IBAction func wakeUpTimeChanged(sender: UIDatePicker) {
         
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "hh:mm a"
+        
         let strDate = dateFormatter.stringFromDate(sender.date)
         wakeUp.text = strDate
+        
+        let minSleepTime: NSDate = calendar.dateByAddingComponents(comps, toDate: sender.date, options: NSCalendarOptions(rawValue: 0))!
+        
+        
+        sleepTimeSelect.minimumDate = minSleepTime
         
     }
     
     
     @IBAction func sleepTimeChanged(sender: UIDatePicker) {
         
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "hh:mm a"
+        
         let strDate = dateFormatter.stringFromDate(sender.date)
         sleep.text = strDate
+
+        let maxWakeUpTime: NSDate = calendar.dateByAddingComponents(comps, toDate: sender.date, options: NSCalendarOptions(rawValue: 0))!
         
-//        if(dateFormatter.stringFromDate(sender.date) < dateFormatter.stringFromDate(sleepTimeSelect.date)) {
-//            
-//            next.enabled = false
-//            
-//        } else {
-//            
-//            next.enabled = true
-//            
-//        }
+        wakeUpTimeSelect.maximumDate = maxWakeUpTime
         
     }
     
@@ -83,10 +93,13 @@ class SleepSchedule: UIViewController {
         if (wakeUpTimeSelect.hidden == true) {
             
             wakeUpTimeSelect.hidden = false
+            datePickerLabel.hidden = false
+            datePickerLabel.text = "Wake Up Time"
 
         } else {
             
             wakeUpTimeSelect.hidden = true
+            datePickerLabel.hidden = true
             
         }
         
@@ -99,10 +112,13 @@ class SleepSchedule: UIViewController {
         if (sleepTimeSelect.hidden == true) {
             
             sleepTimeSelect.hidden = false
+            datePickerLabel.hidden = false
+            datePickerLabel.text = "Sleep Time"
             
         } else {
             
             sleepTimeSelect.hidden = true
+            datePickerLabel.hidden = true
             
         }
         
@@ -110,6 +126,26 @@ class SleepSchedule: UIViewController {
         
     }
     
+    func alertMessage(title: String, message: String) {
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        //alert.addAction(UIAlertAction(title: "OK", style: .Destructive, handler: nil))
+        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action)  -> Void in
+            
+            self.dismissViewControllerAnimated(true, completion: nil)
+            
+        }))
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+    }
+    
+    @IBAction func next(sender: UIBarButtonItem) {
+        if(wakeUp.text == "Wake Up Time" || sleep.text == "Sleep Time") {
+            alertMessage("Time Not Selected", message: "Please select both the wake up and the sleep time.")
+        } else {
+            self.performSegueWithIdentifier("wakingHoursToNotifications", sender: sender)
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

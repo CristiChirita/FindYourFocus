@@ -7,16 +7,27 @@
 //
 
 import UIKit
-import Firebase
 
 class DOB: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var dob: UITextField!
-    var ref = Firebase(url: "https://testyourfocus.firebaseio.com")
+    @IBOutlet weak var next: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         dob.delegate = self
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil);
+        
+    }
+    
+    func keyboardWillShow(sender: NSNotification) {
+        self.view.frame.origin.y = -65
+    }
+    
+    func keyboardWillHide(sender: NSNotification) {
+        self.view.frame.origin.y = 0
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -55,6 +66,15 @@ class DOB: UIViewController, UITextFieldDelegate {
         
     }
     
+    @IBAction func textFieldDidEndEditting(sender: AnyObject) {
+        
+        if(dob.text == "") {
+            next.enabled = false
+        } else {
+            next.enabled = true
+        }
+        
+    }
     func datePickerChanged(sender: UIDatePicker) {
         
         let dateFormatter = NSDateFormatter()

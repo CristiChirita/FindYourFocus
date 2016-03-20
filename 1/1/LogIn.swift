@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 
 class LogIn: UIViewController, UITextFieldDelegate {
 
@@ -16,12 +15,24 @@ class LogIn: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var passwordIcon: UIButton!
     @IBOutlet weak var logIn: UIButton!
-    var ref = Firebase(url: "https://testyourfocus.firebaseio.com")
+    @IBOutlet weak var logInDidntWork: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.email.delegate = self
         self.password.delegate = self
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil);
+
+    }
+    
+    func keyboardWillShow(sender: NSNotification) {
+        self.view.frame.origin.y = -75
+    }
+    
+    func keyboardWillHide(sender: NSNotification) {
+        self.view.frame.origin.y = 0
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -55,36 +66,26 @@ class LogIn: UIViewController, UITextFieldDelegate {
     
     @IBAction func logInButtonPressed(sender: AnyObject) {
         
+        
+        
         if email.text == "" || password.text == "" {
             
-            let alert = UIAlertController(title: "Error in Form ", message: "Please enter a valid email and password.", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action)  -> Void in
-                
-                self.dismissViewControllerAnimated(true, completion: nil)
-                
-            }))
-            self.presentViewController(alert, animated: true, completion: nil)
+            let animation = CABasicAnimation(keyPath: "position")
+            animation.duration = 0.07
+            animation.repeatCount = 2
+            animation.autoreverses = true
+            animation.fromValue = NSValue(CGPoint: CGPointMake(logIn.center.x - 10, logIn.center.y))
+            animation.toValue = NSValue(CGPoint: CGPointMake(logIn.center.x + 10, logIn.center.y))
+            logIn.layer.addAnimation(animation, forKey: "position")
+            
+            logInDidntWork.hidden = false
     
         }  else {
+            logInDidntWork.hidden = true
            self.performSegueWithIdentifier("LogInToHome", sender: sender)
         }
-        ref.authUser(email.text, password: password.text)
-            {
-                error, authData in
-                if error != nil {
-                    let alert = UIAlertController(title: "Error in Form ", message: "Please enter a valid email and password.", preferredStyle: UIAlertControllerStyle.Alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action)  -> Void in
-                        
-                        self.dismissViewControllerAnimated(true, completion: nil)
-                        
-                    }))
-                    self.presentViewController(alert, animated: true, completion: nil)
-                    
-                }
-                else {//see what data will we need
-                }
+
         
     }
-    
 
 }

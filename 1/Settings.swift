@@ -8,7 +8,10 @@
 
 import UIKit
 
-class Settings: UIViewController {
+class Settings: UIViewController, UITableViewDelegate {
+    
+    
+    var tableViewData = ["Waking Hours", "Notifications"]
 
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
@@ -45,9 +48,40 @@ class Settings: UIViewController {
     }
     
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
     }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tableViewData.count
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        
+        let mySelectedCell: UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
+        
+        if(mySelectedCell.textLabel?.text == "Waking Hours") {
+            
+            self.performSegueWithIdentifier("SettingsToWakingHours", sender: mySelectedCell)
+            
+        } else if(mySelectedCell.textLabel?.text == "Notifications") {
+            
+            self.performSegueWithIdentifier("SettingsToNotifications", sender: mySelectedCell)
+        }
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let myNewCell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "cell")
+        
+        myNewCell.textLabel?.text = tableViewData[indexPath.row]
+        myNewCell.accessoryType = .DisclosureIndicator
+        
+        return myNewCell
+        
+    }
+
+
 
 }
