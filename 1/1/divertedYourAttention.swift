@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class divertedYourAttention: UIViewController, UITableViewDelegate {
 
@@ -20,10 +21,35 @@ class divertedYourAttention: UIViewController, UITableViewDelegate {
     let medOrange: UIColor = UIColor(red: 0.973, green: 0.388, blue: 0.173, alpha: 1)
     let darkOrange: UIColor = UIColor(red: 0.796, green: 0.263, blue: 0.106, alpha: 1)
     let green: UIColor = UIColor(red: 0.251, green: 0.831, blue: 0.494, alpha: 1)
+    let ref = Firebase(url: "https://testyourfocus.firebaseio.com")
+
     
     
 
     @IBOutlet weak var other: UITextView!
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let sampleRef = ref.childByAppendingPath("Users").childByAppendingPath(userData.stringForKey(Keys.UID)).childByAppendingPath("Samples").childByAppendingPath(userData.stringForKey(Keys.SAMPLENO)).childByAppendingPath("AttentionDiverted")
+        var otherText : String
+        if (boolArray[11] == true)
+        {
+            otherText = other.text
+        }
+        else { otherText = "false" }
+        var attention = [ String : String]()//= ["Other" : otherText];
+        for var i = 0; i<boolArray.count;i++
+        {
+            if (boolArray[i])
+            {
+                attention.updateValue("\(boolArray[i])", forKey: "\(over18[i])")
+            }
+        }
+        if (otherText != "false")
+        {
+            attention.updateValue(otherText, forKey: "Other")
+        }
+        sampleRef.updateChildValues(attention)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

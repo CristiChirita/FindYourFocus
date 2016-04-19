@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import Firebase
 
 class ChangePassword: UIViewController {
 
     @IBOutlet weak var oldPassword: UITextField!
     @IBOutlet weak var newPassword: UITextField!
     @IBOutlet weak var retypeNewPassword: UITextField!
+    let ref = Firebase (url: "https://testyourfocus.firebaseio.com")
     
     
     func alertMessage(title: String, message: String) {
@@ -68,6 +70,17 @@ class ChangePassword: UIViewController {
                 
                 alert.addAction(UIAlertAction(title: "Continue", style: .Destructive, handler: { (action)  -> Void in
                     
+                    self.ref.changePasswordForUser(EMAIL, fromOld: self.oldPassword.text, toNew: self.newPassword.text, withCompletionBlock:
+                        
+                        {
+                            error in
+                            
+                            if error != nil {}
+                            else {
+                                userData.setObject(self.newPassword.text, forKey: Keys.PASSWORD);
+                                userData.synchronize();
+                            }
+                    })
                     self.performSegueWithIdentifier("PasswordChangeSuccessful", sender: sender)
                     
                 }))

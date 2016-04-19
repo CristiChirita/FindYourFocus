@@ -8,6 +8,29 @@
 //
 
 import UIKit
+import Firebase
+
+var UID : String?
+var EMAIL: String?
+var PASSWORD: String?
+var NOTIFICATIONS: Int?
+var SAMPLENO: Int?
+
+let userData = NSUserDefaults.standardUserDefaults();
+
+struct Keys {
+    static let UID = "UID";
+    static let EMAIL = "Email";
+    static let PASSWORD = "Password";
+    static let SAMPLENO = "SampleNo";
+    static let WAKEUP = "WakeUpTime"
+    static let SLEEP = "SleepTime";
+    static let NOTIFICATIONS = "Notifications";
+    static let ACTIVITIES = "Activities";
+    static let ACTIVITYCOUNT = "ActivityCount";
+    static let INTERVALMIDDLES = "Interval";
+    static let INTERVALERROR = "Error";
+}
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -24,6 +47,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIBarButtonItem.appearance().tintColor = UIColor.whiteColor()
         
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+        
+        Firebase.defaultConfig().persistenceEnabled = true
     
         return true
     }

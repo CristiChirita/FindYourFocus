@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import Firebase
 
 class DOB: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var dob: UITextField!
     @IBOutlet weak var next: UIBarButtonItem!
+    var ref = Firebase(url: "https://testyourfocus.firebaseio.com")
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +25,32 @@ class DOB: UIViewController, UITextFieldDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil);
         
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        //print("Does work!")
+        var age : Int
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "dd MMM yyyy"
+        let date = dateFormatter.dateFromString(dob.text!)
+        //let now : NSDate = NSDate()
+        let calendar : NSCalendar = NSCalendar.currentCalendar()
+        let unitFlags : NSCalendarUnit = [NSCalendarUnit.Year, NSCalendarUnit.Month, NSCalendarUnit.Day]
+        let dateComponentNow : NSDateComponents = calendar.components(unitFlags, fromDate: NSDate())
+        let dateComponentBirth : NSDateComponents = calendar.components(unitFlags, fromDate: date!)
+        
+        if ( (dateComponentNow.month < dateComponentBirth.month) ||
+            ((dateComponentNow.month == dateComponentBirth.month) && (dateComponentNow.day < dateComponentBirth.day))
+            )
+        {
+            age =  dateComponentNow.year - dateComponentBirth.year - 1
+        }
+        else {
+            age = dateComponentNow.year - dateComponentBirth.year
+        }
+        print(age)
+        let userAge = ["age" : age]
+        self.ref.childByAppendingPath("Users").childByAppendingPath(userData.stringForKey(Keys.UID)).childByAppendingPath("Data").updateChildValues(userAge)
     }
     
     func keyboardWillShow(sender: NSNotification) {

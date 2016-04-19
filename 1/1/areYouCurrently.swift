@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class areYouCurrently: UIViewController, UITableViewDelegate, UITextViewDelegate {
 
@@ -22,6 +23,7 @@ class areYouCurrently: UIViewController, UITableViewDelegate, UITextViewDelegate
     let medOrange: UIColor = UIColor(red: 0.973, green: 0.388, blue: 0.173, alpha: 1)
     let darkOrange: UIColor = UIColor(red: 0.796, green: 0.263, blue: 0.106, alpha: 1)
     let green: UIColor = UIColor(red: 0.251, green: 0.831, blue: 0.494, alpha: 1)
+    let ref = Firebase (url: "https://testyourfocus.firebaseio.com")
 
 
     override func viewDidLoad() {
@@ -31,6 +33,37 @@ class areYouCurrently: UIViewController, UITableViewDelegate, UITextViewDelegate
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil);
         
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        var otherText : String
+        let sampleRef = ref.childByAppendingPath("Users").childByAppendingPath(userData.stringForKey(Keys.UID)).childByAppendingPath("Samples").childByAppendingPath(userData.stringForKey(Keys.SAMPLENO)).childByAppendingPath("Company")
+        if (boolArray[7] == true) {
+            otherText = other.text
+        }
+        else { otherText = "false" }
+        var companyData = [ String : String]()
+        /*"Alone" : "\(boolArray[0])",
+        "With friends" : "\(boolArray[1])",
+        "With family" : "\(boolArray[2])",
+        "With partner" : "\(boolArray[3])",
+        "On a date" : "\(boolArray[4])",
+        "With children" : "\(boolArray[5])",
+        "With colleagues" : "\(boolArray[6])",
+        "Other" : otherText
+        ]*/
+        for var i = 0; i<boolArray.count - 1 ;i++
+        {
+            if (boolArray[i])
+            {
+                companyData.updateValue("\(boolArray[i])", forKey: "\(over18[i])")
+            }
+        }
+        if (otherText != "false")
+        {
+            companyData.updateValue(otherText, forKey: "Other")
+        }
+        sampleRef.setValue(companyData)
     }
     
     func keyboardWillShow(sender: NSNotification) {

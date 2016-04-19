@@ -7,10 +7,23 @@
 //
 
 import UIKit
+import Firebase
 
 class SurveyPage5: UIViewController {
-
+    
+    let ref = Firebase (url: "https://testyourfocus.firebaseio.com")
+    
     @IBOutlet weak var slider: UISlider!
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let sampleRef = ref.childByAppendingPath("Users").childByAppendingPath(userData.stringForKey(Keys.UID)).childByAppendingPath("Samples").childByAppendingPath(userData.stringForKey(Keys.SAMPLENO)).childByAppendingPath("SliderValues")
+        let value = slider.value
+        sampleRef.updateChildValues(["Happiness level" : "\(value)"])
+        //SAMPLENO = SAMPLENO! + 1
+        let newSampleCount = userData.integerForKey(Keys.SAMPLENO) + 1
+        userData.setInteger(newSampleCount, forKey: Keys.SAMPLENO);
+    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ListOfThings: UITableViewController {
     
@@ -21,6 +22,24 @@ class ListOfThings: UITableViewController {
     let medOrange: UIColor = UIColor(red: 0.973, green: 0.388, blue: 0.173, alpha: 1)
     let darkOrange: UIColor = UIColor(red: 0.796, green: 0.263, blue: 0.106, alpha: 1)
     let green: UIColor = UIColor(red: 0.251, green: 0.831, blue: 0.494, alpha: 1)
+    let ref = Firebase(url: "https://testyourfocus.firebaseio.com")
+    
+    override func didMoveToParentViewController(parent: UIViewController?) {
+        if (!(parent?.isEqual(self.parentViewController) ?? false)) {
+            print("Back Button Pressed!")
+            let sampleRef = ref.childByAppendingPath("Users").childByAppendingPath(userData.stringForKey(Keys.UID)).childByAppendingPath("Samples").childByAppendingPath(userData.stringForKey(Keys.SAMPLENO)).childByAppendingPath("LastAction")
+            var tableData = [String : String]()
+            for var i = 0; i<boolArray.count;i++
+            {
+                if (boolArray[i])
+                {
+                    tableData.updateValue("\(boolArray[i])", forKey: "\(over18[i])")
+                }
+            }
+            sampleRef.updateChildValues(tableData)
+            
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

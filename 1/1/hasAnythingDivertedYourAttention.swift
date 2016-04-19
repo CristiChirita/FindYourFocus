@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class hasAnythingDivertedYourAttention: UIViewController {
     
@@ -24,6 +25,9 @@ class hasAnythingDivertedYourAttention: UIViewController {
     @IBOutlet weak var minuteOrMore: UILabel!
     
     @IBOutlet weak var next: UIBarButtonItem!
+    
+    let ref = Firebase(url: "https://testyourfocus.firebaseio.com")
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,7 +66,7 @@ class hasAnythingDivertedYourAttention: UIViewController {
         minuteOrMore.hidden = true
     }
     
-    @IBAction func nextPressed(sender: UIBarButtonItem) {
+    /*@IBAction func nextPressed(sender: UIBarButtonItem) {
         if(duration.hidden == false) {
             
             performSegueWithIdentifier("ifYes", sender: self)
@@ -72,6 +76,23 @@ class hasAnythingDivertedYourAttention: UIViewController {
             performSegueWithIdentifier("ifNo", sender: self)
             
         }
+    } */
+    
+    @IBAction func nextPressed(sender: UIBarButtonItem) {
+        var durationTime : [String : String]
+        let sampleRef = ref.childByAppendingPath("Users").childByAppendingPath(userData.stringForKey(Keys.UID)).childByAppendingPath("Samples").childByAppendingPath(userData.stringForKey(Keys.SAMPLENO)).childByAppendingPath("AttentionDiverted")
+        if (duration.hidden == false) {
+            durationTime = ["Diverted" : "\(slide.value) minutes"]
+            sampleRef.updateChildValues(durationTime)
+            performSegueWithIdentifier("ifYes", sender: self)
+        }
+        else {
+            durationTime = ["Diverted" : "No"]
+            sampleRef.setValue(durationTime)
+            performSegueWithIdentifier("ifNo", sender: self)
+            
+        }
+        
     }
 
 }
