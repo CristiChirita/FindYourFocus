@@ -38,21 +38,15 @@ class areYouCurrently: UIViewController, UITableViewDelegate, UITextViewDelegate
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         var otherText : String
         let sampleRef = ref.childByAppendingPath("Users").childByAppendingPath(userData.stringForKey(Keys.UID)).childByAppendingPath("Samples").childByAppendingPath(userData.stringForKey(Keys.SAMPLENO)).childByAppendingPath("Company")
-        if (boolArray[7] == true) {
+        var companyData = [ String : String]()
+        if (userData.integerForKey(Keys.AGE)>=18)
+        {
+        if (boolArray[over18.count-1] == true) {
             otherText = other.text
         }
         else { otherText = "false" }
-        var companyData = [ String : String]()
-        /*"Alone" : "\(boolArray[0])",
-        "With friends" : "\(boolArray[1])",
-        "With family" : "\(boolArray[2])",
-        "With partner" : "\(boolArray[3])",
-        "On a date" : "\(boolArray[4])",
-        "With children" : "\(boolArray[5])",
-        "With colleagues" : "\(boolArray[6])",
-        "Other" : otherText
-        ]*/
-        for var i = 0; i<boolArray.count - 1 ;i++
+        
+        for var i = 0; i<over18.count - 1 ;i++
         {
             if (boolArray[i])
             {
@@ -62,6 +56,26 @@ class areYouCurrently: UIViewController, UITableViewDelegate, UITextViewDelegate
         if (otherText != "false")
         {
             companyData.updateValue(otherText, forKey: "Other")
+        }
+        }
+        else {
+            if (boolArray[below18.count-1] == true) {
+                otherText = other.text
+            }
+            else { otherText = "false" }
+            //var companyData = [ String : String]()
+            for var i = 0; i<below18.count - 1 ;i++
+            {
+                if (boolArray[i])
+                {
+                    companyData.updateValue("\(boolArray[i])", forKey: "\(below18[i])")
+                }
+            }
+            if (otherText != "false")
+            {
+                companyData.updateValue(otherText, forKey: "Other")
+            }
+
         }
         sampleRef.setValue(companyData)
     }

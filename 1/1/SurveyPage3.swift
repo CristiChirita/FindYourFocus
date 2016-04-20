@@ -20,6 +20,8 @@ class SurveyPage3: UIViewController {
         let sampleRef = ref.childByAppendingPath("Users").childByAppendingPath(userData.stringForKey(Keys.UID)).childByAppendingPath("Samples").childByAppendingPath(userData.stringForKey(Keys.SAMPLENO)).childByAppendingPath("SliderValues")
         let value = slider.value
         sampleRef.updateChildValues(["Focus level" : "\(value)"])
+        let now = NSDate();
+        ref.childByAppendingPath("Users").childByAppendingPath(userData.stringForKey(Keys.UID)).childByAppendingPath("Samples").childByAppendingPath(userData.stringForKey(Keys.SAMPLENO)).updateChildValues(["Start Time" : "\(now)"])
     }
 
     

@@ -24,7 +24,7 @@ class HorizontalBarChartViewController: UIViewController {
         
         let focusLevels = [20.0, 40.0, 60.0, 30.0, 75.0, 80.0, 30.0, 78.0, 25.0, 40.0, 50.0, 44.0, 70.0, 80.0, 20.0, 30.0, 55.0, 35.0, 71.0, 90.0, 20.0, 25.0, 30.0, 50.0, 82.0, 80.0, 50.0]
         
-        below18Activities = ["Resting", "Walking", "Watching TV", "News", "Music", "Radiot", "Gaming", "Board games", "Childcare", "Sports", "Working", "Studying", "Exercising", "Eating", "Reading", "Cooking", "Praying", "Chatting", "Email", "Surfing net", "With family", "With friends", "Shopping", "Household", "Travelling", "Other"]
+        below18Activities = ["Resting", "Walking", "Watching TV", "News", "Music", "Radio", "Gaming", "Board games", "Childcare", "Sports", "Working", "Studying", "Exercising", "Eating", "Reading", "Cooking", "Praying", "Chatting", "Email", "Surfing net", "With family", "With friends", "Shopping", "Household", "Travelling", "Other"]
         
         setChart(activities, values: focusLevels)
     }

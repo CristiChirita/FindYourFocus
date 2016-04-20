@@ -31,13 +31,15 @@ class divertedYourAttention: UIViewController, UITableViewDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let sampleRef = ref.childByAppendingPath("Users").childByAppendingPath(userData.stringForKey(Keys.UID)).childByAppendingPath("Samples").childByAppendingPath(userData.stringForKey(Keys.SAMPLENO)).childByAppendingPath("AttentionDiverted")
         var otherText : String
-        if (boolArray[11] == true)
+        if (userData.integerForKey(Keys.AGE)>=18)
+        {
+        if (boolArray[over18.count-1] == true)
         {
             otherText = other.text
         }
         else { otherText = "false" }
         var attention = [ String : String]()//= ["Other" : otherText];
-        for var i = 0; i<boolArray.count;i++
+        for var i = 0; i<over18.count;i++
         {
             if (boolArray[i])
             {
@@ -49,6 +51,28 @@ class divertedYourAttention: UIViewController, UITableViewDelegate {
             attention.updateValue(otherText, forKey: "Other")
         }
         sampleRef.updateChildValues(attention)
+        }
+        else
+        {
+            if (boolArray[below18.count-1] == true)
+            {
+                otherText = other.text
+            }
+            else { otherText = "false" }
+            var attention = [ String : String]()//= ["Other" : otherText];
+            for var i = 0; i<below18.count;i++
+            {
+                if (boolArray[i])
+                {
+                    attention.updateValue("\(boolArray[i])", forKey: "\(below18[i])")
+                }
+            }
+            if (otherText != "false")
+            {
+                attention.updateValue(otherText, forKey: "Other")
+            }
+            sampleRef.updateChildValues(attention)
+        }
     }
     
     override func viewDidLoad() {

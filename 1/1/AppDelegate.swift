@@ -23,6 +23,7 @@ struct Keys {
     static let EMAIL = "Email";
     static let PASSWORD = "Password";
     static let SAMPLENO = "SampleNo";
+    static let AGE = "Age";
     static let WAKEUP = "WakeUpTime"
     static let SLEEP = "SleepTime";
     static let NOTIFICATIONS = "Notifications";

@@ -33,7 +33,14 @@ class ListOfThings: UITableViewController {
             {
                 if (boolArray[i])
                 {
-                    tableData.updateValue("\(boolArray[i])", forKey: "\(over18[i])")
+                    if (userData.integerForKey(Keys.AGE)>=18)
+                    {
+                        tableData.updateValue("\(boolArray[i])", forKey: "\(over18[i])")
+                    }
+                    else
+                    {
+                        tableData.updateValue("\(boolArray[i])", forKey: "\(below18[i])")
+                    }
                 }
             }
             sampleRef.updateChildValues(tableData)
