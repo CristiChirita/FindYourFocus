@@ -17,6 +17,7 @@ class ListOfThings: UITableViewController {
     
     var boolArray = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
     
+    var finalArray: [String] = []
     
     let lightOrange: UIColor = UIColor(red: 0.996, green: 0.467, blue: 0.224, alpha: 1)
     let medOrange: UIColor = UIColor(red: 0.973, green: 0.388, blue: 0.173, alpha: 1)
@@ -24,7 +25,7 @@ class ListOfThings: UITableViewController {
     let green: UIColor = UIColor(red: 0.251, green: 0.831, blue: 0.494, alpha: 1)
     let ref = Firebase(url: "https://testyourfocus.firebaseio.com")
     
-    override func didMoveToParentViewController(parent: UIViewController?) {
+  /*  override func didMoveToParentViewController(parent: UIViewController?) {
         if (!(parent?.isEqual(self.parentViewController) ?? false)) {
             print("Back Button Pressed!")
             let sampleRef = ref.childByAppendingPath("Users").childByAppendingPath(userData.stringForKey(Keys.UID)).childByAppendingPath("Samples").childByAppendingPath(userData.stringForKey(Keys.SAMPLENO)).childByAppendingPath("LastAction")
@@ -46,10 +47,40 @@ class ListOfThings: UITableViewController {
             sampleRef.updateChildValues(tableData)
             
         }
+    }*/
+    
+    override func didMoveToParentViewController(parent: UIViewController?) {
+        if (!(parent?.isEqual(self.parentViewController) ?? false)) {
+            print("Back Button Pressed!")
+            let sampleRef = ref.childByAppendingPath("Users").childByAppendingPath(userData.stringForKey(Keys.UID)).childByAppendingPath("Samples").childByAppendingPath(userData.stringForKey(Keys.SAMPLENO)).childByAppendingPath("LastAction")
+            var tableData = [String : String]()
+            for var i = 0; i<finalArray.count;i++
+            {
+                if (boolArray[i])
+                {
+                    tableData.updateValue("\(boolArray[i])", forKey: "\(finalArray[i])")
+                }
+            }
+            sampleRef.updateChildValues(tableData)
+            
+        }
     }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        if userData.integerForKey(Keys.AGE) < 18 {
+            copyArray(below18)
+        } else {
+            copyArray(over18)
+        }
+    }
+    
+    func copyArray(arr: [String]) {
+        for item in arr {
+            finalArray.append(item)
+            boolArray.append(false)
+        }
     }
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -58,7 +89,7 @@ class ListOfThings: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         tableView.backgroundColor = darkOrange
-        return over18.count
+        return finalArray.count
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -94,7 +125,7 @@ class ListOfThings: UITableViewController {
         
         let myNewCell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "myCell")
         
-        myNewCell.textLabel?.text = over18[indexPath.row]
+        myNewCell.textLabel?.text = finalArray[indexPath.row]
         
         myNewCell.backgroundColor = medOrange
         

@@ -19,6 +19,8 @@ class areYouCurrently: UIViewController, UITableViewDelegate, UITextViewDelegate
     
     var boolArray = [false, false, false, false, false, false, false,false]
     
+    var finalArray: [String] = []
+    
     let lightOrange: UIColor = UIColor(red: 0.996, green: 0.467, blue: 0.224, alpha: 1)
     let medOrange: UIColor = UIColor(red: 0.973, green: 0.388, blue: 0.173, alpha: 1)
     let darkOrange: UIColor = UIColor(red: 0.796, green: 0.263, blue: 0.106, alpha: 1)
@@ -33,9 +35,24 @@ class areYouCurrently: UIViewController, UITableViewDelegate, UITextViewDelegate
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil);
         
+        
+        if userData.integerForKey(Keys.AGE) < 18 {
+            copyArray(below18)
+        } else {
+            copyArray(over18)
+        }
+
+        
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    func copyArray(arr: [String]) {
+        for item in arr {
+            finalArray.append(item)
+            boolArray.append(false)
+        }
+    }
+    
+   /* override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         var otherText : String
         let sampleRef = ref.childByAppendingPath("Users").childByAppendingPath(userData.stringForKey(Keys.UID)).childByAppendingPath("Samples").childByAppendingPath(userData.stringForKey(Keys.SAMPLENO)).childByAppendingPath("Company")
         var companyData = [ String : String]()
@@ -78,6 +95,29 @@ class areYouCurrently: UIViewController, UITableViewDelegate, UITextViewDelegate
 
         }
         sampleRef.setValue(companyData)
+    }*/
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        var otherText : String
+        let sampleRef = ref.childByAppendingPath("Users").childByAppendingPath(userData.stringForKey(Keys.UID)).childByAppendingPath("Samples").childByAppendingPath(userData.stringForKey(Keys.SAMPLENO)).childByAppendingPath("Company")
+        if (boolArray[finalArray.count-1] == true) {
+            otherText = other.text
+        }
+        else { otherText = "false" }
+        var companyData = [ String : String]()
+        
+        for var i = 0; i<finalArray.count - 1 ;i++
+        {
+            if (boolArray[i])
+            {
+                companyData.updateValue("\(boolArray[i])", forKey: "\(finalArray[i])")
+            }
+        }
+        if (otherText != "false")
+        {
+            companyData.updateValue(otherText, forKey: "Other")
+        }
+        sampleRef.setValue(companyData)
     }
     
     func keyboardWillShow(sender: NSNotification) {
@@ -96,7 +136,7 @@ class areYouCurrently: UIViewController, UITableViewDelegate, UITextViewDelegate
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         tableView.backgroundColor = darkOrange
-        return over18.count
+        return finalArray.count
         
     }
     
@@ -147,7 +187,7 @@ class areYouCurrently: UIViewController, UITableViewDelegate, UITextViewDelegate
         
         let myNewCell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "myCell")
         
-        myNewCell.textLabel?.text = over18[indexPath.row]
+        myNewCell.textLabel?.text = finalArray[indexPath.row]
         
         myNewCell.backgroundColor = medOrange
         

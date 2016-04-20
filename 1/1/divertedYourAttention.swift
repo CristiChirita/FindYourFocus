@@ -13,9 +13,13 @@ class divertedYourAttention: UIViewController, UITableViewDelegate {
 
     var over18 = ["Notifications", "Games on phones/computer", "Browsing the internet", "Background noises", "TV", "Your music", "Family members", "Friends", "Thoughts unrelated to the task", "Advertising", "Other - please specify"]
     
-     var below18 = ["Notifications", "Games on phones/computer", "Browsing the internet", "Background noises", "TV", "Your music", "Family members", "Friends", "Thoughts unrelated to the task", "Advertising", "Feeling Hungry", "Other - please specify"]
+    var below18 = ["Notifications", "Games on phones/computer", "Browsing the internet", "Background noises", "TV", "Your music", "Family members", "Friends", "Thoughts unrelated to the task", "Advertising", "Feeling Hungry", "Other - please specify"]
     
-    var boolArray = [false, false, false, false, false, false, false, false, false, false, false, false]
+    var finalArray: [String] = []
+    
+    let age = 17
+    
+    var boolArray: [Bool] = []
     
     let lightOrange: UIColor = UIColor(red: 0.996, green: 0.467, blue: 0.224, alpha: 1)
     let medOrange: UIColor = UIColor(red: 0.973, green: 0.388, blue: 0.173, alpha: 1)
@@ -24,56 +28,8 @@ class divertedYourAttention: UIViewController, UITableViewDelegate {
     let ref = Firebase(url: "https://testyourfocus.firebaseio.com")
 
     
-    
 
     @IBOutlet weak var other: UITextView!
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let sampleRef = ref.childByAppendingPath("Users").childByAppendingPath(userData.stringForKey(Keys.UID)).childByAppendingPath("Samples").childByAppendingPath(userData.stringForKey(Keys.SAMPLENO)).childByAppendingPath("AttentionDiverted")
-        var otherText : String
-        if (userData.integerForKey(Keys.AGE)>=18)
-        {
-        if (boolArray[over18.count-1] == true)
-        {
-            otherText = other.text
-        }
-        else { otherText = "false" }
-        var attention = [ String : String]()//= ["Other" : otherText];
-        for var i = 0; i<over18.count;i++
-        {
-            if (boolArray[i])
-            {
-                attention.updateValue("\(boolArray[i])", forKey: "\(over18[i])")
-            }
-        }
-        if (otherText != "false")
-        {
-            attention.updateValue(otherText, forKey: "Other")
-        }
-        sampleRef.updateChildValues(attention)
-        }
-        else
-        {
-            if (boolArray[below18.count-1] == true)
-            {
-                otherText = other.text
-            }
-            else { otherText = "false" }
-            var attention = [ String : String]()//= ["Other" : otherText];
-            for var i = 0; i<below18.count;i++
-            {
-                if (boolArray[i])
-                {
-                    attention.updateValue("\(boolArray[i])", forKey: "\(below18[i])")
-                }
-            }
-            if (otherText != "false")
-            {
-                attention.updateValue(otherText, forKey: "Other")
-            }
-            sampleRef.updateChildValues(attention)
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,7 +38,45 @@ class divertedYourAttention: UIViewController, UITableViewDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil);
         
+        if userData.integerForKey(Keys.AGE) < 18 {
+            copyArray(below18)
+        } else {
+            copyArray(over18)
+        }
+        
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let sampleRef = ref.childByAppendingPath("Users").childByAppendingPath(userData.stringForKey(Keys.UID)).childByAppendingPath("Samples").childByAppendingPath(userData.stringForKey(Keys.SAMPLENO)).childByAppendingPath("AttentionDiverted")
+        var otherText : String
+        if (boolArray[finalArray.count-1] == true)
+        {
+            otherText = other.text
+        }
+        else { otherText = "false" }
+        var attention = [ String : String]()//= ["Other" : otherText];
+        for var i = 0; i<finalArray.count;i++
+        {
+            if (boolArray[i])
+            {
+                attention.updateValue("\(boolArray[i])", forKey: "\(finalArray[i])")
+            }
+        }
+        if (otherText != "false")
+        {
+            attention.updateValue(otherText, forKey: "Other")
+        }
+        sampleRef.updateChildValues(attention)
+    }
+
+    
+    func copyArray(arr: [String]) {
+        for item in arr {
+            finalArray.append(item)
+            boolArray.append(false)
+        }
+    }
+    
     
     func keyboardWillShow(sender: NSNotification) {
         self.view.frame.origin.y = -210
@@ -101,7 +95,7 @@ class divertedYourAttention: UIViewController, UITableViewDelegate {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         tableView.backgroundColor = darkOrange
-        return over18.count
+        return finalArray.count
         
     }
     
@@ -153,7 +147,7 @@ class divertedYourAttention: UIViewController, UITableViewDelegate {
         
         let myNewCell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "myCell")
         
-        myNewCell.textLabel?.text = over18[indexPath.row]
+        myNewCell.textLabel?.text = finalArray[indexPath.row]
         
         myNewCell.backgroundColor = medOrange
         
