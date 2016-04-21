@@ -107,7 +107,7 @@ class ChangePassword: UIViewController {
             
         } else {
             
-            if newPassword.text == retypeNewPassword.text {
+            if newPassword.text == retypeNewPassword.text && oldPassword.text == userData.stringForKey(Keys.PASSWORD)! {
                 
                 // create the alert
                 let alert = UIAlertController(title: "Password Change", message: "Password Successfully Changed", preferredStyle: UIAlertControllerStyle.Alert)
@@ -130,6 +130,7 @@ class ChangePassword: UIViewController {
                             else {
                                 userData.setObject(self.newPassword.text!, forKey: Keys.PASSWORD);
                                 userData.synchronize();
+                                self.presentViewController(alert, animated: true, completion: nil)
                             }
                     })
                     
@@ -138,7 +139,7 @@ class ChangePassword: UIViewController {
                 
                 // show the alert
                 //self.performSegueWithIdentifier("PasswordChangeSuccessful", sender: sender)
-                self.presentViewController(alert, animated: true, completion: nil)
+                
                 
             } else {
                 
