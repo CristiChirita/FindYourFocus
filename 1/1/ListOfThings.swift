@@ -9,6 +9,10 @@
 import UIKit
 import Firebase
 
+var finalArray: [String] = []
+var finalArrayCount: [Int] = []
+var posDistracted = [Int]()
+//var updatedCount = [Int]()
 class ListOfThings: UITableViewController {
     
     var over18 = ["Resting or sleeping", "Walking", "Watching TV, film, online videos", "News watching", "Listening to music", "Listening to a radio program", "Gaming", "Playing board games", "Childcare", "Playing Sport", "Working", "Studying", "Intimate relations", "Exercising", "Eating", "Reading (books, paper, online)", "Cooking", "Praying/meditating", "Online Chatting", "Email", "Surfing the net", "Engaging with family member", "Engaging with friends", "Shopping, running errands", "Household admin", "Travelling"]
@@ -17,7 +21,7 @@ class ListOfThings: UITableViewController {
     
     var boolArray = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
     
-    var finalArray: [String] = []
+    
     
     let lightOrange: UIColor = UIColor(red: 0.996, green: 0.467, blue: 0.224, alpha: 1)
     let medOrange: UIColor = UIColor(red: 0.973, green: 0.388, blue: 0.173, alpha: 1)
@@ -54,13 +58,27 @@ class ListOfThings: UITableViewController {
             print("Back Button Pressed!")
             let sampleRef = ref.childByAppendingPath("Users").childByAppendingPath(userData.stringForKey(Keys.UID)).childByAppendingPath("Samples").childByAppendingPath(userData.stringForKey(Keys.SAMPLENO)).childByAppendingPath("LastAction")
             var tableData = [String : String]()
+            var updatedCount = userData.objectForKey(Keys.ACTIVITYCOUNT) as! [Int]
+            var updatedFocus = userData.objectForKey(Keys.ACTIVITYFOCUSLEVEL) as! [Int]
             for var i = 0; i<finalArray.count;i++
             {
+                
                 if (boolArray[i])
                 {
                     tableData.updateValue("\(boolArray[i])", forKey: "\(finalArray[i])")
+                    updatedCount[i]++
+                    updatedFocus[i] += focus!
+                    posDistracted.append(1)
                 }
+                else
+                {
+                    posDistracted.append(0)
+                }
+            
             }
+            userData.setObject(updatedCount, forKey: Keys.ACTIVITYCOUNT)
+            userData.setObject(updatedFocus, forKey: Keys.ACTIVITYFOCUSLEVEL)
+            userData.synchronize()
             sampleRef.updateChildValues(tableData)
             
         }

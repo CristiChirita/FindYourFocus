@@ -29,8 +29,11 @@ struct Keys {
     static let NOTIFICATIONS = "Notifications";
     static let ACTIVITIES = "Activities";
     static let ACTIVITYCOUNT = "ActivityCount";
+    static let DISTRACTEDCOUNT = "DistractedCount"
+    static let ACTIVITYFOCUSLEVEL = "ActivityFocusLevel";
     static let INTERVALMIDDLES = "Interval";
     static let INTERVALERROR = "Error";
+    static let TOTALFOCUS = "Focus";
 }
 
 @UIApplicationMain

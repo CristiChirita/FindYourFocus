@@ -59,6 +59,47 @@ class Consent_To_Participate: UIViewController {
         label8.text = "Accumulated data (combined from groups of users) may be published or presented at scientific meetings (my personal information will never be included in this and I will never be identifiable from the results presented)."
         
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (userData.integerForKey(Keys.AGE)>=18)
+        {
+                let over18 = ["Resting or sleeping", "Walking", "Watching TV, film, online videos", "News watching", "Listening to music", "Listening to a radio program", "Gaming", "Playing board games", "Childcare", "Playing Sport", "Working", "Studying", "Intimate relations", "Exercising", "Eating", "Reading (books, paper, online)", "Cooking", "Praying/meditating", "Online Chatting", "Email", "Surfing the net", "Engaging with family member", "Engaging with friends", "Shopping, running errands", "Household admin", "Travelling"]
+            var activitycount = [Int]()
+            var focuscount = [Int]()
+            var distractedcount = [Int]()
+            for var i=0;i<over18.count;i++
+            {
+                activitycount.append(0);
+                focuscount.append(0);
+                distractedcount.append(0)
+            }
+            userData.setObject(over18, forKey: Keys.ACTIVITIES)
+            userData.setObject(activitycount, forKey: Keys.ACTIVITYCOUNT)
+            userData.setObject(focuscount, forKey: Keys.ACTIVITYFOCUSLEVEL)
+            userData.setObject(distractedcount, forKey: Keys.DISTRACTEDCOUNT)
+            userData.setInteger(0, forKey: Keys.TOTALFOCUS)
+            userData.synchronize()
+        }
+        else
+        {
+                let below18 = ["Resting or sleeping", "Walking", "Watching TV, film, online videos", "News watching", "Listening to music", "Listening to a radio program or podcast", "Gaming", "Playing board games", "Childcare", "Playing Sport", "Working", "Studying/ homework", "Exercising", "Eating", "Reading (books, paper, online)", "Cooking", "Praying/meditating", "Online Chatting", "Email", "Surfing the net", "Engaging with family member", "Engaging with friends", "Shopping, running errands", "Household chores", "Travelling"]
+            var activitycount = [Int]()
+            var focuscount = [Int]()
+            var distractedcount = [Int]()
+            for var i=0;i<below18.count;i++
+            {
+                activitycount.append(0);
+                focuscount.append(0);
+                distractedcount.append(0)
+            }
+            userData.setObject(below18, forKey: Keys.ACTIVITIES)
+            userData.setObject(activitycount, forKey: Keys.ACTIVITYCOUNT)
+            userData.setObject(focuscount, forKey: Keys.ACTIVITYFOCUSLEVEL)
+            userData.setObject(distractedcount, forKey: Keys.DISTRACTEDCOUNT)
+            userData.setInteger(0, forKey: Keys.TOTALFOCUS)
+            userData.synchronize()
+        }
+    }
 
     @IBAction func click(sender: UIButton) {
         

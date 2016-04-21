@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 
+var focus : Int?
+
 class SurveyPage3: UIViewController {
 
     @IBOutlet weak var slider: UISlider!
@@ -19,6 +21,10 @@ class SurveyPage3: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let sampleRef = ref.childByAppendingPath("Users").childByAppendingPath(userData.stringForKey(Keys.UID)).childByAppendingPath("Samples").childByAppendingPath(userData.stringForKey(Keys.SAMPLENO)).childByAppendingPath("SliderValues")
         let value = slider.value
+        focus = Int(value);
+        var totalFocus = userData.integerForKey(Keys.TOTALFOCUS)
+        totalFocus += focus!
+        userData.setInteger(totalFocus, forKey: Keys.TOTALFOCUS)
         sampleRef.updateChildValues(["Focus level" : "\(value)"])
         let now = NSDate();
         ref.childByAppendingPath("Users").childByAppendingPath(userData.stringForKey(Keys.UID)).childByAppendingPath("Samples").childByAppendingPath(userData.stringForKey(Keys.SAMPLENO)).updateChildValues(["Start Time" : "\(now)"])

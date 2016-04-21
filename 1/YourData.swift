@@ -8,6 +8,12 @@
 
 import UIKit
 
+let activities = userData.objectForKey(Keys.ACTIVITIES) as! [String]
+let activityCount = userData.objectForKey(Keys.ACTIVITYCOUNT) as! [Int]
+let activityFocus = userData.objectForKey(Keys.ACTIVITYFOCUSLEVEL) as! [Int]
+var average : Int?
+var relDifferences = [Int]()
+
 class YourData: UIViewController, UITableViewDelegate {
     
     let surveyCount = 30
@@ -15,6 +21,7 @@ class YourData: UIViewController, UITableViewDelegate {
     @IBOutlet weak var distractedBy: UILabel!
     @IBOutlet weak var focussedWhen: UILabel!
     var tableViewData = ["Focus Level by Activity"]
+    
     
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
@@ -31,16 +38,34 @@ class YourData: UIViewController, UITableViewDelegate {
             menuButton.action = "revealToggle:"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
-        
-        distractedBy.text = "You seem most distracted by: "
-        focussedWhen.text = "It appears you are most focussed when you are: "
+        for var i=0;i<activityCount.count;i++
+        {
+            print(activityFocus[i])
+            print(activityCount[i])
+            if (activityCount[i] != 0)
+            {
+            relDifferences.append(activityFocus[i]/activityCount[i])
+            }
+            else
+            {
+                relDifferences.append(0)
+            }
+            //print(activityFocus[i]/activityCount[i])
+        }
+        let maxdiff = relDifferences.maxElement()
+        let activitymax = activities[relDifferences.indexOf(maxdiff!)!]
+        let distracted = userData.objectForKey(Keys.DISTRACTEDCOUNT) as! [Int]
+        let maxdistracted = distracted.maxElement()
+        let distractedActivity = activities[distracted.indexOf(maxdistracted!)!]
+        distractedBy.text = "You seem most distracted by: \(distractedActivity)"
+        focussedWhen.text = "It appears you are most focused when you are: \(activitymax)"
 
     }
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        if (surveyCount < 30) {
+        if (/*userData.integerForKey(Keys.SAMPLENO)*/surveyCount < 30) {
                 
                 let alert = UIAlertController(title: "Not enough data", message: "You have not completed enough surveys. Try again when you have done some more surveys.", preferredStyle: UIAlertControllerStyle.Alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action)  -> Void in

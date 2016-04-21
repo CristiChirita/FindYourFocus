@@ -83,6 +83,12 @@ class hasAnythingDivertedYourAttention: UIViewController {
         let sampleRef = ref.childByAppendingPath("Users").childByAppendingPath(userData.stringForKey(Keys.UID)).childByAppendingPath("Samples").childByAppendingPath(userData.stringForKey(Keys.SAMPLENO)).childByAppendingPath("AttentionDiverted")
         if (duration.hidden == false) {
             durationTime = ["Diverted" : "\(slide.value) minutes"]
+            var distractionCount = userData.objectForKey(Keys.DISTRACTEDCOUNT) as! [Int]
+            for var i=0;i<distractionCount.count;i++
+            {
+                distractionCount[i] += posDistracted[i]
+            }
+            userData.setObject(distractionCount, forKey: Keys.DISTRACTEDCOUNT)
             sampleRef.updateChildValues(durationTime)
             performSegueWithIdentifier("ifYes", sender: self)
         }
