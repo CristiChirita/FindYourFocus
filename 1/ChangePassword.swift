@@ -53,7 +53,7 @@ class ChangePassword: UIViewController {
     }
 
     
-    @IBAction func donePressed(sender: UIBarButtonItem) {
+    /*@IBAction func donePressed(sender: UIBarButtonItem) {
         
         if oldPassword.text == newPassword.text {
             
@@ -81,11 +81,12 @@ class ChangePassword: UIViewController {
                                 userData.synchronize();
                             }
                     })
-                    self.performSegueWithIdentifier("PasswordChangeSuccessful", sender: sender)
+                    
                     
                 }))
                 
                 // show the alert
+                //self.performSegueWithIdentifier("PasswordChangeSuccessful", sender: sender)
                 self.presentViewController(alert, animated: true, completion: nil)
             
             } else {
@@ -96,6 +97,58 @@ class ChangePassword: UIViewController {
             
         }
         
+    } */
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if oldPassword.text == newPassword.text {
+            
+            alertMessage("Error In Form", message: "New Password cannot be same as the old password.")
+            
+        } else {
+            
+            if newPassword.text == retypeNewPassword.text {
+                
+                // create the alert
+                let alert = UIAlertController(title: "Password Change", message: "Password Successfully Changed", preferredStyle: UIAlertControllerStyle.Alert)
+                
+                // add an action (button)
+                
+                alert.addAction(UIAlertAction(title: "Continue", style: .Destructive, handler: { (action)  -> Void in
+                    print(self.oldPassword.text!)
+                    print(self.newPassword.text!)
+                    print(userData.stringForKey(Keys.EMAIL)!)
+                    self.ref.changePasswordForUser(userData.stringForKey(Keys.EMAIL)!, fromOld: self.oldPassword.text!, toNew: self.newPassword.text!, withCompletionBlock:
+                        
+                        {
+                            error in
+                            
+                            if error != nil {
+                            print("Nope")
+                            print(error)
+                            }
+                            else {
+                                userData.setObject(self.newPassword.text!, forKey: Keys.PASSWORD);
+                                userData.synchronize();
+                            }
+                    })
+                    
+                    
+                }))
+                
+                // show the alert
+                //self.performSegueWithIdentifier("PasswordChangeSuccessful", sender: sender)
+                self.presentViewController(alert, animated: true, completion: nil)
+                
+            } else {
+                
+                alertMessage("Error In Form", message: "Retype New Password and New Password do not match.")
+                
+            }
+            
+        }
+        
+
     }
     
     

@@ -91,11 +91,11 @@ class LogIn: UIViewController, UITextFieldDelegate {
                 {
                     error, authData in
                     if error != nil {
-                        UID = authData.uid;
+                        //UID = authData.uid;
                         let alert = UIAlertController(title: "Error in Form ", message: "Please enter a valid email and password.", preferredStyle: UIAlertControllerStyle.Alert)
                         alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action)  -> Void in
                             
-                            self.dismissViewControllerAnimated(true, completion: nil)
+                            //self.dismissViewControllerAnimated(true, completion: nil)
                             
                         }))
                         self.presentViewController(alert, animated: true, completion: nil)

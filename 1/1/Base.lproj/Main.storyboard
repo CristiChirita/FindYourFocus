@@ -796,7 +796,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sFv-sg-9KF">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sFv-sg-9KF">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sTa-Vh-LEX">
@@ -1471,7 +1471,7 @@
                     <navigationItem key="navigationItem" title="Change Password" id="Fic-1H-3rk">
                         <barButtonItem key="rightBarButtonItem" title="Done" id="XWL-4S-3j8">
                             <connections>
-                                <action selector="donePressed:" destination="gD6-E1-p0r" id="aqv-mW-j5h"/>
+                                <segue destination="dz7-uR-x1m" kind="show" id="w9l-VX-hVf"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1481,7 +1481,6 @@
                         <outlet property="newPassword" destination="Bz0-0a-7gu" id="aB5-xM-Hy2"/>
                         <outlet property="oldPassword" destination="6JZ-Ga-NZo" id="BOe-KS-eRq"/>
                         <outlet property="retypeNewPassword" destination="nLJ-lS-AVK" id="Knc-0E-rLy"/>
-                        <segue destination="dz7-uR-x1m" kind="show" identifier="PasswordChangeSuccessful" id="Hde-Qg-Uws"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="adk-JD-IoL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2324,7 +2323,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="myCell" id="ZbS-RA-shf">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZbS-RA-shf" id="o9i-zZ-HcI">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -3206,9 +3205,9 @@ Unless required by applicable law or agreed to in writing, software distributed 
         <image name="settings 21-57-48-605.png" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="r5g-id-9H8"/>
-        <segue reference="FwV-YY-lMC"/>
         <segue reference="8Qg-a5-YXg"/>
+        <segue reference="w9l-VX-hVf"/>
+        <segue reference="FwV-YY-lMC"/>
         <segue reference="wNG-vX-34Q"/>
         <segue reference="bH2-Ea-pLk"/>
         <segue reference="Acw-ku-8xT"/>
