@@ -37,7 +37,7 @@ class Consent_To_Participate: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        pageView.backgroundColor = UIColor(patternImage: UIImage(named: "app background.png")!)
+        pageView.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundImage.png")!)
 
         
         scrollView.contentSize = CGSizeMake(self.view.frame.width, 650)

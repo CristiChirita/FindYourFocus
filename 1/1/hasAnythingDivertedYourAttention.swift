@@ -32,7 +32,7 @@ class hasAnythingDivertedYourAttention: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "app background.png")!)
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundImage.png")!)
         
         duration.text = "If the distraction was longer than 1 minute, please estimate how long your attention been diverted for."
     }

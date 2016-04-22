@@ -21,7 +21,7 @@ class Sign_Up: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "app background.png")!)
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundImage.png")!)
         
         self.email.delegate = self
         self.password.delegate = self

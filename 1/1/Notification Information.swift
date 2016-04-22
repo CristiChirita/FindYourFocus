@@ -21,7 +21,7 @@ class Notification_Information: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        pageView.backgroundColor = UIColor(patternImage: UIImage(named: "app background.png")!)
+        pageView.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundImage.png")!)
         
         scrollView.contentSize = CGSizeMake(self.view.frame.width, 600)
         

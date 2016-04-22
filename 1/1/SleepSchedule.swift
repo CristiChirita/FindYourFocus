@@ -38,7 +38,7 @@ class SleepSchedule: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "app background.png")!)
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundImage.png")!)
         
         
         note.text = "Note: We will not send any notifications within one hour of your usual waking or sleeping times."

@@ -22,7 +22,7 @@ class NotificationsSettings: UIViewController, UIPickerViewDataSource, UIPickerV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "app background.png")!)
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundImage.png")!)
         
         numberOfNotifications.selectRow(2, inComponent: 0, animated: true)
         
