@@ -14,13 +14,13 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
-//        if let image = UIImage(named: "backgroundImage.png") {
-//            self.view.backgroundColor = UIColor(patternImage: image)
-//        } else {
-//            print("There was no such image as background.jpg")
-//        }
+        if let image = UIImage(named: "backgroundImage.png") {
+            self.view.backgroundColor = UIColor(patternImage: image)
+        } else {
+            print("There was no such image as background.jpg")
+        }
         
-      self.view.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundImage.png")!)
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundImage.png")!)
     }
     
 

@@ -25,7 +25,6 @@ class LogIn: UIViewController, UITextFieldDelegate {
         
         
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundImage.png")!)
-        //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundImage.png")!)
         
         self.email.delegate = self
         self.password.delegate = self
