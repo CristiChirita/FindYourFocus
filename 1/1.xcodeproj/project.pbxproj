@@ -14,6 +14,7 @@
 		6B3D1D081C88BF6E00C01B6B /* Tour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3D1D071C88BF6E00C01B6B /* Tour.swift */; };
 		6B3D6BA71C8EC32F00FCDAFF /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3D6BA61C8EC32F00FCDAFF /* Settings.swift */; };
 		6B3D6BA91C8EF03700FCDAFF /* ChangePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3D6BA81C8EF03700FCDAFF /* ChangePassword.swift */; };
+		6B48B4131CCCBB0F0002A9D3 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B48B4121CCCBB0F0002A9D3 /* Menu.swift */; };
 		6B6CBA4A1C8B1A73004DDC71 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B6CBA491C8B1A73004DDC71 /* logo.png */; };
 		6B6CBA4C1C8B3BA6004DDC71 /* Notification Information.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6CBA4B1C8B3BA6004DDC71 /* Notification Information.swift */; };
 		6B6CBA4E1C8B44CF004DDC71 /* Checkbox Empty.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B6CBA4D1C8B44CF004DDC71 /* Checkbox Empty.png */; };
@@ -164,6 +165,7 @@
 		6B3D1D071C88BF6E00C01B6B /* Tour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tour.swift; sourceTree = "<group>"; };
 		6B3D6BA61C8EC32F00FCDAFF /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Settings.swift; path = ../Settings.swift; sourceTree = "<group>"; };
 		6B3D6BA81C8EF03700FCDAFF /* ChangePassword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChangePassword.swift; path = ../ChangePassword.swift; sourceTree = "<group>"; };
+		6B48B4121CCCBB0F0002A9D3 /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		6B6CBA491C8B1A73004DDC71 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		6B6CBA4B1C8B3BA6004DDC71 /* Notification Information.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Notification Information.swift"; sourceTree = "<group>"; };
 		6B6CBA4D1C8B44CF004DDC71 /* Checkbox Empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Checkbox Empty.png"; sourceTree = "<group>"; };
@@ -388,6 +390,7 @@
 				6B8B10C11C87548000CC21BA /* NotificationsSettings.swift */,
 				6B6CBA4B1C8B3BA6004DDC71 /* Notification Information.swift */,
 				6B3D6BA61C8EC32F00FCDAFF /* Settings.swift */,
+				6B48B4121CCCBB0F0002A9D3 /* Menu.swift */,
 			);
 			name = Pages;
 			sourceTree = "<group>";
@@ -711,6 +714,7 @@
 				6BB0FB5E1CC0D3A000653E12 /* ChartsLicense.swift in Sources */,
 				6BB0FB611CC0E32E00653E12 /* YourData.swift in Sources */,
 				6B6CBA541C8C2DAA004DDC71 /* Sign Up.swift in Sources */,
+				6B48B4131CCCBB0F0002A9D3 /* Menu.swift in Sources */,
 				6B6CBA521C8B4932004DDC71 /* Consent To Participate.swift in Sources */,
 				6BCA62211C95A3420071B527 /* MenuTable.swift in Sources */,
 				6B241BA71C972170004FCE4C /* HorizontalBarChartViewController.swift in Sources */,

@@ -2181,7 +2181,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gu6-zu-trh">
                                 <rect key="frame" x="-4" y="270" width="383" height="128"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Extreemly Focused" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bBf-ZA-4lw">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Extremely Focused" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bBf-ZA-4lw">
                                         <rect key="frame" x="316" y="85" width="54" height="27"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="54" id="28K-ez-cb1"/>
@@ -2191,7 +2191,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Extreemly Unfocused" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x4d-Oz-Lu8">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Extremely Unfocused" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x4d-Oz-Lu8">
                                         <rect key="frame" x="8" y="85" width="57" height="27"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="27" id="4ff-Yq-KbG"/>
@@ -2295,7 +2295,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="myCell" id="ZbS-RA-shf">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZbS-RA-shf" id="o9i-zZ-HcI">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -2808,7 +2808,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
         <!--Menu-->
         <scene sceneID="4yZ-sp-1LO">
             <objects>
-                <tableViewController title="Menu" id="xIO-Ek-f5M" sceneMemberID="viewController">
+                <tableViewController title="Menu" id="xIO-Ek-f5M" customClass="Menu" customModule="Focus" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="XMm-er-IxA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2967,9 +2967,6 @@ Unless required by applicable law or agreed to in writing, software distributed 
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.94085192679999996" green="0.94903725390000004" blue="0.95307987930000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <connections>
-                                            <segue destination="EW3-Mc-1ZY" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="IV0-sk-znF"/>
-                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -2980,6 +2977,10 @@ Unless required by applicable law or agreed to in writing, software distributed 
                         </connections>
                     </tableView>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="signOut" destination="EWF-kQ-zeQ" id="Mlo-eT-eNM"/>
+                        <segue destination="EW3-Mc-1ZY" kind="custom" identifier="signOut" customClass="SWRevealViewControllerSeguePushController" id="fBv-FA-jJW"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fBi-sh-ooO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -3177,11 +3178,11 @@ Unless required by applicable law or agreed to in writing, software distributed 
         <image name="settings 21-57-48-605.png" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="FwV-YY-lMC"/>
         <segue reference="8Qg-a5-YXg"/>
         <segue reference="w9l-VX-hVf"/>
+        <segue reference="f4B-hP-dtY"/>
         <segue reference="wNG-vX-34Q"/>
         <segue reference="bH2-Ea-pLk"/>
-        <segue reference="VkK-ft-Kr2"/>
+        <segue reference="Acw-ku-8xT"/>
     </inferredMetricsTieBreakers>
 </document>
