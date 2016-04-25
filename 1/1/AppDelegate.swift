@@ -36,7 +36,7 @@ struct Keys {
     static let ACTIVITYFOCUSLEVEL = "ActivityFocusLevel";
     static let INTERVALMIDDLES = "Interval";
     static let INTERVALERROR = "Error";
-    static let TOTALFOCUS = "Focus";
+    static let TOTALFOCUS = "TotalFocus";
 }
 
 @UIApplicationMain

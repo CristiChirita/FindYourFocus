@@ -67,7 +67,25 @@ class NotificationsSettings: UIViewController, UIPickerViewDataSource, UIPickerV
         // Dispose of any resources that can be recreated.
     }
     
-
+ /*   func applicationWillTerminate(application: UIApplication) {
+        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        ref.removeUser(userData.stringForKey(Keys.EMAIL), password: userData.stringForKey(Keys.PASSWORD), withCompletionBlock:
+            {
+                error in
+                if error != nil
+                {
+                    print("Nope")
+                }
+                else
+                {
+                    backupRef.childByAppendingPath(userData.stringForKey(Keys.UID)).removeValue()
+                    userData.setValue(nil, forKey: Keys.EMAIL)
+                    userData.setValue(nil, forKey: Keys.UID)
+                    userData.setValue(nil, forKey: Keys.PASSWORD)
+                    ref.unauth()
+                }
+        })
+    } */
 
 
 }

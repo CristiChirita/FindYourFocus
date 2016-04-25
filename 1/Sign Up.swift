@@ -76,7 +76,7 @@ class Sign_Up: UIViewController, UITextFieldDelegate {
                         //userData.synchronize();
                         SAMPLENO = 1
                         userData.setInteger(1, forKey: Keys.SAMPLENO)
-                        userData.synchronize();
+                        //userData.synchronize();
                         ref.authUser(self.email.text, password: self.password.text,
                             withCompletionBlock: { error, authData in
                                 if error != nil {
@@ -88,7 +88,7 @@ class Sign_Up: UIViewController, UITextFieldDelegate {
                                         //"dispayName": self.email.text
                                     ]
                                     ref.childByAppendingPath("Users").childByAppendingPath(authData.uid).childByAppendingPath("Data").setValue(newUser)
-                                    let sample = [Keys.SAMPLENO : userData.stringForKey(Keys.SAMPLENO)!]
+                                    let sample = [Keys.SAMPLENO : userData.integerForKey(Keys.SAMPLENO)]
                                     backupRef.childByAppendingPath(userData.stringForKey(Keys.UID)).updateChildValues(sample)
                                 }
                         })

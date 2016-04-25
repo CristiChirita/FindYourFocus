@@ -2598,8 +2598,8 @@ Unless required by applicable law or agreed to in writing, software distributed 
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Extreemly Happy" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ogM-xK-LrK">
-                                <rect key="frame" x="300" y="341" width="79" height="43"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Extremely Happy" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ogM-xK-LrK">
+                                <rect key="frame" x="293" y="341" width="82" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="79" id="GjY-W9-TnG"/>
                                     <constraint firstAttribute="height" constant="43" id="R4C-pH-dsC"/>
@@ -2608,8 +2608,8 @@ Unless required by applicable law or agreed to in writing, software distributed 
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Extreemly Unhappy" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A2J-Vp-8NU">
-                                <rect key="frame" x="9" y="341" width="77" height="43"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Extremely Unhappy" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A2J-Vp-8NU">
+                                <rect key="frame" x="0.0" y="341" width="94" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="77" id="JYT-hJ-Kyf"/>
                                     <constraint firstAttribute="height" constant="43" id="Mo4-XD-tsb"/>
@@ -3183,11 +3183,11 @@ Unless required by applicable law or agreed to in writing, software distributed 
         <image name="settings 21-57-48-605.png" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8Qg-a5-YXg"/>
-        <segue reference="w9l-VX-hVf"/>
-        <segue reference="f4B-hP-dtY"/>
-        <segue reference="wNG-vX-34Q"/>
-        <segue reference="bH2-Ea-pLk"/>
+        <segue reference="a1M-w6-YbN"/>
         <segue reference="Acw-ku-8xT"/>
+        <segue reference="bH2-Ea-pLk"/>
+        <segue reference="wNG-vX-34Q"/>
+        <segue reference="w9l-VX-hVf"/>
+        <segue reference="8Qg-a5-YXg"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -24,7 +24,7 @@ class SurveyPage5: UIViewController {
         //SAMPLENO = SAMPLENO! + 1
         let newSampleCount = userData.integerForKey(Keys.SAMPLENO) + 1
         userData.setInteger(newSampleCount, forKey: Keys.SAMPLENO)
-        let sample = [Keys.SAMPLENO : userData.stringForKey(Keys.SAMPLENO)!]
+        let sample = [Keys.SAMPLENO : userData.integerForKey(Keys.SAMPLENO)]
         backupRef.childByAppendingPath(userData.stringForKey(Keys.UID)).updateChildValues(sample);
         
     }

@@ -56,6 +56,7 @@ class ListOfThings: UITableViewController {
     }*/
     
     override func didMoveToParentViewController(parent: UIViewController?) {
+        var i = 0
         if (!(parent?.isEqual(self.parentViewController) ?? false)) {
             print("Back Button Pressed!")
             posDistracted = []
@@ -63,7 +64,7 @@ class ListOfThings: UITableViewController {
             var tableData = [String : String]()
             var updatedCount = userData.objectForKey(Keys.ACTIVITYCOUNT) as! [Int]
             var updatedFocus = userData.objectForKey(Keys.ACTIVITYFOCUSLEVEL) as! [Int]
-            for var i = 0; i<finalArray.count;i++
+            for i = 0; i<finalArray.count;i++
             {
                 
                 if (boolArray[i])
@@ -80,14 +81,15 @@ class ListOfThings: UITableViewController {
             
             }
             userData.setObject(updatedCount, forKey: Keys.ACTIVITYCOUNT)
+            updatedCount.append(-1)
             backupRef.childByAppendingPath(userData.stringForKey(Keys.UID)).childByAppendingPath("ActivityCount").setValue(updatedCount)
             userData.setObject(updatedFocus, forKey: Keys.ACTIVITYFOCUSLEVEL)
+            updatedFocus.append(-1)
             backupRef.childByAppendingPath(userData.stringForKey(Keys.UID)).childByAppendingPath("FocusCount").setValue(updatedFocus)
-            userData.synchronize()
+            //userData.synchronize()
             sampleRef.updateChildValues(tableData)
-            
-            
         }
+        print(i)
     }
 
 
@@ -101,6 +103,8 @@ class ListOfThings: UITableViewController {
     }
     
     func copyArray(arr: [String]) {
+        finalArray = []
+        boolArray = []
         for item in arr {
             finalArray.append(item)
             boolArray.append(false)

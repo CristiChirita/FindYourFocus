@@ -129,7 +129,7 @@ class ChangePassword: UIViewController {
                             }
                             else {
                                 userData.setObject(self.newPassword.text!, forKey: Keys.PASSWORD);
-                                userData.synchronize();
+                                //userData.synchronize();
                                 
                             }
                     })

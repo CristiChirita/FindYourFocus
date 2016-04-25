@@ -49,6 +49,7 @@ class Settings: UIViewController, UITableViewDelegate {
                     }
                     else
                     {
+                        backupRef.childByAppendingPath(userData.stringForKey(Keys.UID)).removeValue()
                         userData.setValue(nil, forKey: Keys.EMAIL)
                         userData.setValue(nil, forKey: Keys.UID)
                         userData.setValue(nil, forKey: Keys.PASSWORD)

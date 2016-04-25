@@ -89,6 +89,7 @@ class hasAnythingDivertedYourAttention: UIViewController {
                 distractionCount[i] += posDistracted[i]
             }
             userData.setObject(distractionCount, forKey: Keys.DISTRACTEDCOUNT)
+            distractionCount.append(-1)
             backupRef.childByAppendingPath(userData.stringForKey(Keys.UID)).childByAppendingPath("DistractedCount").setValue(distractionCount)
             sampleRef.updateChildValues(durationTime)
             performSegueWithIdentifier("ifYes", sender: self)

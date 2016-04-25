@@ -103,6 +103,17 @@ class LogIn: UIViewController, UITextFieldDelegate {
                         
                     }
                     else {//see what data will we need
+                        if (authData.uid != userData.stringForKey(Keys.UID))
+                        {
+                            userData.setObject(authData.uid, forKey: Keys.UID)
+                            userData.synchronize()
+                            userData.setObject(self.email.text!, forKey: Keys.EMAIL)
+                            userData.synchronize()
+                            userData.setObject(self.password.text!, forKey: Keys.PASSWORD)
+                            userData.synchronize()
+                            self.syncronise()
+                            
+                        }
                         self.performSegueWithIdentifier("LogInToHome", sender: sender)
                     }
                     
@@ -110,6 +121,90 @@ class LogIn: UIViewController, UITextFieldDelegate {
            //self.performSegueWithIdentifier("LogInToHome", sender: sender)
         }
 
+        
+    }
+    
+    func syncronise()
+    {
+        backupRef.childByAppendingPath(userData.stringForKey(Keys.UID)).observeSingleEventOfType(.Value, withBlock:
+            {
+                snapshot in
+                print(snapshot)
+                let age = snapshot.value[Keys.AGE] as! Int
+                let sampleNo = snapshot.value[Keys.SAMPLENO] as! Int
+                let totalFocus = snapshot.value[Keys.TOTALFOCUS] as! Int
+                //print(age)
+                userData.setInteger(age, forKey: Keys.AGE)
+                userData.synchronize()
+                userData.setInteger(sampleNo, forKey: Keys.SAMPLENO)
+                userData.synchronize()
+                userData.setInteger(totalFocus, forKey: Keys.TOTALFOCUS)
+                userData.synchronize()
+                if age >= 18
+                {
+                    let over18 = ["Resting or sleeping", "Walking", "Watching TV, film, online videos", "News watching", "Listening to music", "Listening to a radio program", "Gaming", "Playing board games", "Childcare", "Playing Sport", "Working", "Studying", "Intimate relations", "Exercising", "Eating", "Reading (books, paper, online)", "Cooking", "Praying or meditating", "Online Chatting", "Email", "Surfing the net", "Engaging with family member", "Engaging with friends", "Shopping, running errands", "Household admin", "Travelling"]
+                    userData.setObject(over18, forKey: Keys.ACTIVITIES)
+                    userData.synchronize()
+
+                }
+                else
+                {
+                    let below18 = ["Resting or sleeping", "Walking", "Watching TV, film, online videos", "News watching", "Listening to music", "Listening to a radio program or podcast", "Gaming", "Playing board games", "Childcare", "Playing Sport", "Working", "Studying or homework", "Exercising", "Eating", "Reading (books, paper, online)", "Cooking", "Praying or meditating", "Online Chatting", "Email", "Surfing the net", "Engaging with family member", "Engaging with friends", "Shopping, running errands", "Household chores", "Travelling"]
+                    userData.setObject(below18, forKey: Keys.ACTIVITIES)
+                    userData.synchronize()
+                }
+                //print(userData.integerForKey(Keys.AGE))
+        })
+        
+        backupRef.childByAppendingPath(userData.stringForKey(Keys.UID)).childByAppendingPath("ActivityCount").observeSingleEventOfType(.Value, withBlock:
+            {
+                snapshot in
+                print(snapshot)
+                var activityCount = [Int]()
+                var i = 0
+                while ((snapshot.value[i] as! Int ) != -1)
+                {
+                    print(i)
+                    //print(snapshot.value[i] as! Int)
+                    activityCount.append(snapshot.value[i] as! Int)
+                    i++
+                }
+                userData.setObject(activityCount, forKey: Keys.ACTIVITYCOUNT)
+                userData.synchronize()
+        })
+        backupRef.childByAppendingPath(userData.stringForKey(Keys.UID)).childByAppendingPath("DistractedCount").observeSingleEventOfType(.Value, withBlock:
+            {
+                snapshot in
+                print(snapshot)
+                var distractedCount = [Int]()
+                var i = 0
+                while ((snapshot.value[i] as! Int ) != -1)
+                {
+                    print(i)
+                    //print(snapshot.value[i] as! Int)
+                    distractedCount.append(snapshot.value[i] as! Int)
+                    i++
+                }
+                userData.setObject(distractedCount, forKey: Keys.DISTRACTEDCOUNT)
+                userData.synchronize()
+        })
+        backupRef.childByAppendingPath(userData.stringForKey(Keys.UID)).childByAppendingPath("FocusCount").observeSingleEventOfType(.Value, withBlock:
+            {
+                snapshot in
+                print(snapshot)
+                var focusCount = [Int]()
+                var i = 0
+                while ((snapshot.value[i] as! Int ) != -1)
+                {
+                    print(i)
+                    //print(snapshot.value[i] as! Int)
+                    focusCount.append(snapshot.value[i] as! Int)
+                    i++
+                }
+                userData.setObject(focusCount, forKey: Keys.ACTIVITYFOCUSLEVEL)
+                userData.synchronize()
+        })
+        
         
     }
 

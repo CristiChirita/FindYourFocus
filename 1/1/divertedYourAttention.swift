@@ -11,9 +11,9 @@ import Firebase
 
 class divertedYourAttention: UIViewController, UITableViewDelegate {
 
-    var over18 = ["Notifications", "Games on phones/computer", "Browsing the internet", "Background noises", "TV", "Your music", "Family members", "Friends", "Thoughts unrelated to the task", "Advertising", "Other - please specify"]
+    var over18 = ["Notifications", "Games on phones or computer", "Browsing the internet", "Background noises", "TV", "Your music", "Family members", "Friends", "Thoughts unrelated to the task", "Advertising", "Other - please specify"]
     
-    var below18 = ["Notifications", "Games on phones/computer", "Browsing the internet", "Background noises", "TV", "Your music", "Family members", "Friends", "Thoughts unrelated to the task", "Advertising", "Feeling Hungry", "Other - please specify"]
+    var below18 = ["Notifications", "Games on phones or computer", "Browsing the internet", "Background noises", "TV", "Your music", "Family members", "Friends", "Thoughts unrelated to the task", "Advertising", "Feeling Hungry", "Other - please specify"]
     
     var finalArray: [String] = []
     
