@@ -18,6 +18,7 @@ var SAMPLENO: Int?
 
 let userData = NSUserDefaults.standardUserDefaults();
 let ref = Firebase (url: "https://testyourfocus.firebaseio.com")
+let backupRef = ref.childByAppendingPath("Backup")
 
 
 struct Keys {

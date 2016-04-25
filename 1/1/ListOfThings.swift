@@ -21,7 +21,7 @@ class ListOfThings: UITableViewController {
     
     var below18 = ["Resting or sleeping", "Walking", "Watching TV, film, online videos", "News watching", "Listening to music", "Listening to a radio program or podcast", "Gaming", "Playing board games", "Childcare", "Playing Sport", "Working", "Studying or homework", "Exercising", "Eating", "Reading (books, paper, online)", "Cooking", "Praying or meditating", "Online Chatting", "Email", "Surfing the net", "Engaging with family member", "Engaging with friends", "Shopping, running errands", "Household chores", "Travelling"]
     
-    var boolArray = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+    var boolArray = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
     
     
     
@@ -58,6 +58,7 @@ class ListOfThings: UITableViewController {
     override func didMoveToParentViewController(parent: UIViewController?) {
         if (!(parent?.isEqual(self.parentViewController) ?? false)) {
             print("Back Button Pressed!")
+            posDistracted = []
             let sampleRef = ref.childByAppendingPath("Users").childByAppendingPath(userData.stringForKey(Keys.UID)).childByAppendingPath("Samples").childByAppendingPath(userData.stringForKey(Keys.SAMPLENO)).childByAppendingPath("LastAction")
             var tableData = [String : String]()
             var updatedCount = userData.objectForKey(Keys.ACTIVITYCOUNT) as! [Int]
@@ -79,7 +80,9 @@ class ListOfThings: UITableViewController {
             
             }
             userData.setObject(updatedCount, forKey: Keys.ACTIVITYCOUNT)
+            backupRef.childByAppendingPath(userData.stringForKey(Keys.UID)).childByAppendingPath("ActivityCount").setValue(updatedCount)
             userData.setObject(updatedFocus, forKey: Keys.ACTIVITYFOCUSLEVEL)
+            backupRef.childByAppendingPath(userData.stringForKey(Keys.UID)).childByAppendingPath("FocusCount").setValue(updatedFocus)
             userData.synchronize()
             sampleRef.updateChildValues(tableData)
             

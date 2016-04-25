@@ -88,6 +88,8 @@ class Sign_Up: UIViewController, UITextFieldDelegate {
                                         //"dispayName": self.email.text
                                     ]
                                     ref.childByAppendingPath("Users").childByAppendingPath(authData.uid).childByAppendingPath("Data").setValue(newUser)
+                                    let sample = [Keys.SAMPLENO : userData.stringForKey(Keys.SAMPLENO)!]
+                                    backupRef.childByAppendingPath(userData.stringForKey(Keys.UID)).updateChildValues(sample)
                                 }
                         })
                         self.performSegueWithIdentifier("SignUpToGender", sender: sender)

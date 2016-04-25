@@ -25,6 +25,7 @@ class SurveyPage3: UIViewController {
         var totalFocus = userData.integerForKey(Keys.TOTALFOCUS)
         totalFocus += focus!
         userData.setInteger(totalFocus, forKey: Keys.TOTALFOCUS)
+        backupRef.childByAppendingPath(userData.stringForKey(Keys.UID)).updateChildValues(["TotalFocus" : totalFocus])
         sampleRef.updateChildValues(["Focus level" : "\(value)"])
         let now = NSDate();
         ref.childByAppendingPath("Users").childByAppendingPath(userData.stringForKey(Keys.UID)).childByAppendingPath("Samples").childByAppendingPath(userData.stringForKey(Keys.SAMPLENO)).updateChildValues(["Start Time" : "\(now)"])

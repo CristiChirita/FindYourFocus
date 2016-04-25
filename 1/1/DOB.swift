@@ -52,6 +52,7 @@ class DOB: UIViewController, UITextFieldDelegate {
         let userAge = ["age" : age]
         ref.childByAppendingPath("Users").childByAppendingPath(userData.stringForKey(Keys.UID)).childByAppendingPath("Data").updateChildValues(userAge)
         userData.setInteger(age, forKey: Keys.AGE)
+        backupRef.childByAppendingPath(userData.stringForKey(Keys.UID)).updateChildValues(userAge)
     }
     
     func keyboardWillShow(sender: NSNotification) {

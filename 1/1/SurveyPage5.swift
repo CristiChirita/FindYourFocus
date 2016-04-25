@@ -23,7 +23,9 @@ class SurveyPage5: UIViewController {
         ref.childByAppendingPath("Users").childByAppendingPath(userData.stringForKey(Keys.UID)).childByAppendingPath("Samples").childByAppendingPath(userData.stringForKey(Keys.SAMPLENO)).updateChildValues(["End Time" : "\(now)"])
         //SAMPLENO = SAMPLENO! + 1
         let newSampleCount = userData.integerForKey(Keys.SAMPLENO) + 1
-        userData.setInteger(newSampleCount, forKey: Keys.SAMPLENO);
+        userData.setInteger(newSampleCount, forKey: Keys.SAMPLENO)
+        let sample = [Keys.SAMPLENO : userData.stringForKey(Keys.SAMPLENO)!]
+        backupRef.childByAppendingPath(userData.stringForKey(Keys.UID)).updateChildValues(sample);
         
     }
 

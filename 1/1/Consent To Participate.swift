@@ -78,6 +78,10 @@ class Consent_To_Participate: UIViewController {
             userData.setObject(focuscount, forKey: Keys.ACTIVITYFOCUSLEVEL)
             userData.setObject(distractedcount, forKey: Keys.DISTRACTEDCOUNT)
             userData.setInteger(0, forKey: Keys.TOTALFOCUS)
+            backupRef.childByAppendingPath("ActivityCount").setValue(activitycount)
+            backupRef.childByAppendingPath("FocusCount").setValue(focuscount)
+            backupRef.childByAppendingPath("DistractedCount").setValue(distractedcount)
+            backupRef.setValue(["TotalFocus" : 0])
             userData.synchronize()
         }
         else
@@ -97,6 +101,10 @@ class Consent_To_Participate: UIViewController {
             userData.setObject(focuscount, forKey: Keys.ACTIVITYFOCUSLEVEL)
             userData.setObject(distractedcount, forKey: Keys.DISTRACTEDCOUNT)
             userData.setInteger(0, forKey: Keys.TOTALFOCUS)
+            backupRef.childByAppendingPath(userData.stringForKey(Keys.UID)).childByAppendingPath("ActivityCount").setValue(activitycount)
+            backupRef.childByAppendingPath(userData.stringForKey(Keys.UID)).childByAppendingPath("FocusCount").setValue(focuscount)
+            backupRef.childByAppendingPath(userData.stringForKey(Keys.UID)).childByAppendingPath("DistractedCount").setValue(distractedcount)
+            backupRef.childByAppendingPath(userData.stringForKey(Keys.UID)).updateChildValues(["TotalFocus" : 0])
             userData.synchronize()
         }
     }
