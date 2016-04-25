@@ -11,7 +11,7 @@ import Firebase
 
 class Settings: UIViewController, UITableViewDelegate {
     
-    var ref = Firebase(url: "https://testyourfocus.firebaseio.com")
+    //var ref = Firebase(url: "https://testyourfocus.firebaseio.com")
     
     var tableViewData = ["Waking Hours", "Notifications"]
 
@@ -40,7 +40,7 @@ class Settings: UIViewController, UITableViewDelegate {
         
         alert.addAction(UIAlertAction(title: "Continue", style: .Destructive, handler: { (action)  -> Void in
             
-            self.ref.removeUser(userData.stringForKey(Keys.EMAIL), password: userData.stringForKey(Keys.PASSWORD), withCompletionBlock:
+            ref.removeUser(userData.stringForKey(Keys.EMAIL), password: userData.stringForKey(Keys.PASSWORD), withCompletionBlock:
                 {
                     error in
                     if error != nil
@@ -52,7 +52,7 @@ class Settings: UIViewController, UITableViewDelegate {
                         userData.setValue(nil, forKey: Keys.EMAIL)
                         userData.setValue(nil, forKey: Keys.UID)
                         userData.setValue(nil, forKey: Keys.PASSWORD)
-                        self.ref.unauth()
+                        ref.unauth()
                     }
             })
             

@@ -13,7 +13,7 @@ class DOB: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var dob: UITextField!
     @IBOutlet weak var next: UIBarButtonItem!
-    var ref = Firebase(url: "https://testyourfocus.firebaseio.com")
+    //var ref = Firebase(url: "https://testyourfocus.firebaseio.com")
 
     
     override func viewDidLoad() {
@@ -50,7 +50,7 @@ class DOB: UIViewController, UITextFieldDelegate {
         }
         print(age)
         let userAge = ["age" : age]
-        self.ref.childByAppendingPath("Users").childByAppendingPath(userData.stringForKey(Keys.UID)).childByAppendingPath("Data").updateChildValues(userAge)
+        ref.childByAppendingPath("Users").childByAppendingPath(userData.stringForKey(Keys.UID)).childByAppendingPath("Data").updateChildValues(userAge)
         userData.setInteger(age, forKey: Keys.AGE)
     }
     

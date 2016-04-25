@@ -12,12 +12,14 @@ import Firebase
 var finalArray: [String] = []
 var finalArrayCount: [Int] = []
 var posDistracted = [Int]()
+var openedList = false
+
 //var updatedCount = [Int]()
 class ListOfThings: UITableViewController {
     
-    var over18 = ["Resting or sleeping", "Walking", "Watching TV, film, online videos", "News watching", "Listening to music", "Listening to a radio program", "Gaming", "Playing board games", "Childcare", "Playing Sport", "Working", "Studying", "Intimate relations", "Exercising", "Eating", "Reading (books, paper, online)", "Cooking", "Praying/meditating", "Online Chatting", "Email", "Surfing the net", "Engaging with family member", "Engaging with friends", "Shopping, running errands", "Household admin", "Travelling"]
+    var over18 = ["Resting or sleeping", "Walking", "Watching TV, film, online videos", "News watching", "Listening to music", "Listening to a radio program", "Gaming", "Playing board games", "Childcare", "Playing Sport", "Working", "Studying", "Intimate relations", "Exercising", "Eating", "Reading (books, paper, online)", "Cooking", "Praying or meditating", "Online Chatting", "Email", "Surfing the net", "Engaging with family member", "Engaging with friends", "Shopping, running errands", "Household admin", "Travelling"]
     
-    var below18 = ["Resting or sleeping", "Walking", "Watching TV, film, online videos", "News watching", "Listening to music", "Listening to a radio program or podcast", "Gaming", "Playing board games", "Childcare", "Playing Sport", "Working", "Studying/ homework", "Exercising", "Eating", "Reading (books, paper, online)", "Cooking", "Praying/meditating", "Online Chatting", "Email", "Surfing the net", "Engaging with family member", "Engaging with friends", "Shopping, running errands", "Household chores", "Travelling"]
+    var below18 = ["Resting or sleeping", "Walking", "Watching TV, film, online videos", "News watching", "Listening to music", "Listening to a radio program or podcast", "Gaming", "Playing board games", "Childcare", "Playing Sport", "Working", "Studying or homework", "Exercising", "Eating", "Reading (books, paper, online)", "Cooking", "Praying or meditating", "Online Chatting", "Email", "Surfing the net", "Engaging with family member", "Engaging with friends", "Shopping, running errands", "Household chores", "Travelling"]
     
     var boolArray = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
     
@@ -27,7 +29,7 @@ class ListOfThings: UITableViewController {
     let medOrange: UIColor = UIColor(red: 0.973, green: 0.388, blue: 0.173, alpha: 1)
     let darkOrange: UIColor = UIColor(red: 0.796, green: 0.263, blue: 0.106, alpha: 1)
     let green: UIColor = UIColor(red: 0.251, green: 0.831, blue: 0.494, alpha: 1)
-    let ref = Firebase(url: "https://testyourfocus.firebaseio.com")
+    //let ref = Firebase(url: "https://testyourfocus.firebaseio.com")
     
   /*  override func didMoveToParentViewController(parent: UIViewController?) {
         if (!(parent?.isEqual(self.parentViewController) ?? false)) {
@@ -80,6 +82,7 @@ class ListOfThings: UITableViewController {
             userData.setObject(updatedFocus, forKey: Keys.ACTIVITYFOCUSLEVEL)
             userData.synchronize()
             sampleRef.updateChildValues(tableData)
+            
             
         }
     }

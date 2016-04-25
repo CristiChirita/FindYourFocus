@@ -16,7 +16,7 @@ class SurveyPage3: UIViewController {
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var begin: UIButton!
     @IBOutlet weak var menuButton: UIBarButtonItem!
-    let ref = Firebase (url: "https://testyourfocus.firebaseio.com")
+    //let ref = Firebase (url: "https://testyourfocus.firebaseio.com")
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let sampleRef = ref.childByAppendingPath("Users").childByAppendingPath(userData.stringForKey(Keys.UID)).childByAppendingPath("Samples").childByAppendingPath(userData.stringForKey(Keys.SAMPLENO)).childByAppendingPath("SliderValues")

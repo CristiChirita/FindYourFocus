@@ -11,7 +11,7 @@ import Firebase
 
 class SurveyPage5: UIViewController {
     
-    let ref = Firebase (url: "https://testyourfocus.firebaseio.com")
+    //let ref = Firebase (url: "https://testyourfocus.firebaseio.com")
     
     @IBOutlet weak var slider: UISlider!
 

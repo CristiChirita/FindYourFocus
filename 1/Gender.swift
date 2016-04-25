@@ -17,7 +17,7 @@ class Gender: UIViewController {
     @IBOutlet weak var maleRadio: UIButton!
     @IBOutlet weak var femaleRadio: UIButton!
     @IBOutlet weak var next: UIBarButtonItem!
-    var ref = Firebase(url: "https://testyourfocus.firebaseio.com")
+    //var ref = Firebase(url: "https://testyourfocus.firebaseio.com")
 
     
     override func viewDidLoad() {
@@ -34,7 +34,7 @@ class Gender: UIViewController {
             gender = ["gender" : "male"]
         }
         else  { gender = ["gender" : "female"] }
-        self.ref.childByAppendingPath("Users").childByAppendingPath(userData.stringForKey(Keys.UID)).childByAppendingPath("Data").updateChildValues(gender)
+        ref.childByAppendingPath("Users").childByAppendingPath(userData.stringForKey(Keys.UID)).childByAppendingPath("Data").updateChildValues(gender)
     }
 
 

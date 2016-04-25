@@ -15,7 +15,7 @@ class Sign_Up: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var emailIcon: UIButton!
     @IBOutlet weak var passwordIcon: UIButton!
-    var ref = Firebase(url: "https://testyourfocus.firebaseio.com")
+    //var ref = Firebase(url: "https://testyourfocus.firebaseio.com")
 
     
     
@@ -77,7 +77,7 @@ class Sign_Up: UIViewController, UITextFieldDelegate {
                         SAMPLENO = 1
                         userData.setInteger(1, forKey: Keys.SAMPLENO)
                         userData.synchronize();
-                        self.ref.authUser(self.email.text, password: self.password.text,
+                        ref.authUser(self.email.text, password: self.password.text,
                             withCompletionBlock: { error, authData in
                                 if error != nil {
                                     // There was an error logging in to this account
@@ -87,8 +87,7 @@ class Sign_Up: UIViewController, UITextFieldDelegate {
                                         "provider": authData.provider,
                                         //"dispayName": self.email.text
                                     ]
-                                    
-                                    self.ref.childByAppendingPath("Users").childByAppendingPath(authData.uid).childByAppendingPath("Data").setValue(newUser)
+                                    ref.childByAppendingPath("Users").childByAppendingPath(authData.uid).childByAppendingPath("Data").setValue(newUser)
                                 }
                         })
                         self.performSegueWithIdentifier("SignUpToGender", sender: sender)

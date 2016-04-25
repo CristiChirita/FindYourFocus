@@ -17,7 +17,7 @@ class LogIn: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordIcon: UIButton!
     @IBOutlet weak var logIn: UIButton!
     @IBOutlet weak var logInDidntWork: UILabel!
-    var ref = Firebase(url: "https://testyourfocus.firebaseio.com")
+    //var ref = Firebase(url: "https://testyourfocus.firebaseio.com")
 
     
     override func viewDidLoad() {

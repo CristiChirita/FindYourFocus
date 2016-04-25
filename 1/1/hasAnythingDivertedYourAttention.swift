@@ -26,7 +26,7 @@ class hasAnythingDivertedYourAttention: UIViewController {
     
     @IBOutlet weak var next: UIBarButtonItem!
     
-    let ref = Firebase(url: "https://testyourfocus.firebaseio.com")
+    //let ref = Firebase(url: "https://testyourfocus.firebaseio.com")
 
     
     override func viewDidLoad() {

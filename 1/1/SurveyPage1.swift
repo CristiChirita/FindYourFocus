@@ -7,10 +7,15 @@
 //
 
 import UIKit
+import Firebase
+
 
 class SurveyPage1: UIViewController {
 
  
+    @IBOutlet weak var time: UITextField!
+    
+    @IBOutlet weak var other: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +24,26 @@ class SurveyPage1: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil);
         
+    }
+    
+    
+    @IBAction func listOpened(sender: AnyObject) {
+       openedList=true
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let sampleRef = ref.childByAppendingPath("Users").childByAppendingPath(userData.stringForKey(Keys.UID)).childByAppendingPath("Samples").childByAppendingPath(userData.stringForKey(Keys.SAMPLENO)).childByAppendingPath("LastAction")
+        let pastActionTimer = ["Time" : "\(time.text!) minutes",
+                               "Other" : "\(other.text)"]
+        sampleRef.updateChildValues(pastActionTimer)
+        if (openedList==false)
+        {
+            let activities = userData.objectForKey(Keys.ACTIVITIES) as! [String]
+            for _ in activities
+            {
+                posDistracted.append(0)
+            }
+        }
     }
     
     func keyboardWillShow(sender: NSNotification) {

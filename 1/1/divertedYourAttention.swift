@@ -25,7 +25,7 @@ class divertedYourAttention: UIViewController, UITableViewDelegate {
     let medOrange: UIColor = UIColor(red: 0.973, green: 0.388, blue: 0.173, alpha: 1)
     let darkOrange: UIColor = UIColor(red: 0.796, green: 0.263, blue: 0.106, alpha: 1)
     let green: UIColor = UIColor(red: 0.251, green: 0.831, blue: 0.494, alpha: 1)
-    let ref = Firebase(url: "https://testyourfocus.firebaseio.com")
+    //let ref = Firebase(url: "https://testyourfocus.firebaseio.com")
 
     
 

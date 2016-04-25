@@ -17,6 +17,8 @@ var NOTIFICATIONS: Int?
 var SAMPLENO: Int?
 
 let userData = NSUserDefaults.standardUserDefaults();
+let ref = Firebase (url: "https://testyourfocus.firebaseio.com")
+
 
 struct Keys {
     static let UID = "UID";

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class Menu: UITableViewController {
 
@@ -21,6 +22,7 @@ class Menu: UITableViewController {
     }
     
     func signingOut(sender: UITapGestureRecognizer) {
+        ref.unauth()
         self.performSegueWithIdentifier("signOut", sender: sender)
     }
 }

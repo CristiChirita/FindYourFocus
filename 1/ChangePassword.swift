@@ -14,7 +14,7 @@ class ChangePassword: UIViewController {
     @IBOutlet weak var oldPassword: UITextField!
     @IBOutlet weak var newPassword: UITextField!
     @IBOutlet weak var retypeNewPassword: UITextField!
-    let ref = Firebase (url: "https://testyourfocus.firebaseio.com")
+    //let ref = Firebase (url: "https://testyourfocus.firebaseio.com")
     
     
     func alertMessage(title: String, message: String) {
@@ -118,7 +118,7 @@ class ChangePassword: UIViewController {
                     print(self.oldPassword.text!)
                     print(self.newPassword.text!)
                     print(userData.stringForKey(Keys.EMAIL)!)
-                    self.ref.changePasswordForUser(userData.stringForKey(Keys.EMAIL)!, fromOld: self.oldPassword.text!, toNew: self.newPassword.text!, withCompletionBlock:
+                    ref.changePasswordForUser(userData.stringForKey(Keys.EMAIL)!, fromOld: self.oldPassword.text!, toNew: self.newPassword.text!, withCompletionBlock:
                         
                         {
                             error in
