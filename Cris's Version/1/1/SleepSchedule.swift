@@ -64,7 +64,7 @@ class SleepSchedule: UIViewController {
         let strDate = dateFormatter.stringFromDate(sender.date)
         wakeUp.text = strDate
         
-        //comps.hour = 2
+        comps.hour = 2
         let minSleepTime: NSDate = calendar.dateByAddingComponents(comps, toDate: sender.date, options: NSCalendarOptions(rawValue: 0))!
         
         
@@ -79,7 +79,7 @@ class SleepSchedule: UIViewController {
         let strDate = dateFormatter.stringFromDate(sender.date)
         sleep.text = strDate
 
-        //comps.hour = -2
+        comps.hour = -2
         let maxWakeUpTime: NSDate = calendar.dateByAddingComponents(comps, toDate: sender.date, options: NSCalendarOptions(rawValue: 0))!
         
         wakeUpTimeSelect.maximumDate = maxWakeUpTime
