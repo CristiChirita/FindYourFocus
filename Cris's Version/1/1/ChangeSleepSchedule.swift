@@ -62,13 +62,29 @@ class ChangeSleepSchedule: UIViewController {
     
     @IBAction func wakeUpTimeChanged(sender: UIDatePicker) {
         
+        
         let strDate = dateFormatter.stringFromDate(sender.date)
         wakeUp.text = strDate
         
+        comps.hour = 2
         let minSleepTime: NSDate = calendar.dateByAddingComponents(comps, toDate: sender.date, options: NSCalendarOptions(rawValue: 0))!
         
         
         sleepTimeSelect.minimumDate = minSleepTime
+        
+
+    }
+
+    
+    @IBAction func sleepTimeChanged(sender: UIDatePicker) {
+        
+        let strDate = dateFormatter.stringFromDate(sender.date)
+        sleep.text = strDate
+        
+        comps.hour = -2
+        let maxWakeUpTime: NSDate = calendar.dateByAddingComponents(comps, toDate: sender.date, options: NSCalendarOptions(rawValue: 0))!
+        
+        wakeUpTimeSelect.maximumDate = maxWakeUpTime
     }
 
     override func didReceiveMemoryWarning() {
@@ -77,14 +93,7 @@ class ChangeSleepSchedule: UIViewController {
     }
     
     
-    @IBAction func sleepTimeChanged(sender: UIDatePicker) {
-        let strDate = dateFormatter.stringFromDate(sender.date)
-        sleep.text = strDate
-        
-        let maxWakeUpTime: NSDate = calendar.dateByAddingComponents(comps, toDate: sender.date, options: NSCalendarOptions(rawValue: 0))!
-        
-        wakeUpTimeSelect.maximumDate = maxWakeUpTime
-    }
+
     
     func wakeUpTappedView(){
         
@@ -175,7 +184,7 @@ class ChangeSleepSchedule: UIViewController {
         print(userData.integerForKey(Keys.NOTIFICATIONS))
         if (activeTime-3600.0)/3600.0 < Double(userData.integerForKey(Keys.NOTIFICATIONS))
         {
-            userData.setInteger(Int(activeTime/3600.0-1), forKey: Keys.NOTIFICATIONS)
+            userData.setInteger(Int(activeTime/3600.0), forKey: Keys.NOTIFICATIONS)
             userData.synchronize()
         }
         print(userData.integerForKey(Keys.NOTIFICATIONS))
