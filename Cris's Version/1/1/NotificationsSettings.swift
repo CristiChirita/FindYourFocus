@@ -95,6 +95,12 @@ class NotificationsSettings: UIViewController, UIPickerViewDataSource, UIPickerV
         //let activeTimeInt =  (Int) activeTime
         print(activeTime)
         print(userData.integerForKey(Keys.NOTIFICATIONS))
+        if (activeTime-3600.0)/3600.0 < Double(userData.integerForKey(Keys.NOTIFICATIONS))
+        {
+            userData.setInteger(Int(activeTime/3600.0-1), forKey: Keys.NOTIFICATIONS)
+            userData.synchronize()
+        }
+        print(userData.integerForKey(Keys.NOTIFICATIONS))
         let intervalLength = Int(activeTime) / userData.integerForKey(Keys.NOTIFICATIONS)
         var currentIntervalStart = wakeup
         var intervalMiddles = [NSDate]()
