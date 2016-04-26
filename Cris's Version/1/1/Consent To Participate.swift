@@ -177,7 +177,7 @@ class Consent_To_Participate: UIViewController {
             notificationComponents.minute = hourComponents.minute
             let notificationTime = NSCalendar.currentCalendar().dateFromComponents(notificationComponents)
             print(notificationTime!)
-            var notification = UILocalNotification()
+            let notification = UILocalNotification()
             notification.alertBody = "How focued are you now?"
             notification.alertAction = "open"
             notification.fireDate = notificationTime!
