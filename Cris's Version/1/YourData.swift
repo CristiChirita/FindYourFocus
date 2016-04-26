@@ -65,7 +65,7 @@ class YourData: UIViewController, UITableViewDelegate {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        if (/*userData.integerForKey(Keys.SAMPLENO)*/surveyCount < 30) {
+        if (userData.integerForKey(Keys.SAMPLENO) < 30) {
                 
                 let alert = UIAlertController(title: "Not enough data", message: "You have not completed enough surveys. Try again when you have done some more surveys.", preferredStyle: UIAlertControllerStyle.Alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action)  -> Void in

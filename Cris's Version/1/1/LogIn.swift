@@ -130,6 +130,8 @@ class LogIn: UIViewController, UITextFieldDelegate {
 
                             
                         }
+                        userData.setBool(true, forKey: Keys.SIGNUPCOMPLETED)
+                        userData.synchronize()
                         self.performSegueWithIdentifier("LogInToHome", sender: sender)
                     }
                     
@@ -246,7 +248,7 @@ class LogIn: UIViewController, UITextFieldDelegate {
                     intervalMiddles.append(dateFormatter.dateFromString(snapshot.value[i] as! String)!)
                     i++
                 }
-                userData.setObject(intervalMiddles, forKey: Keys.ACTIVITYFOCUSLEVEL)
+                userData.setObject(intervalMiddles, forKey: Keys.INTERVALMIDDLES)
                 userData.synchronize()
         })
 
@@ -284,6 +286,7 @@ class LogIn: UIViewController, UITextFieldDelegate {
             notification.alertAction = "open"
             notification.fireDate = notificationTime!
             notification.soundName = UILocalNotificationDefaultSoundName
+            notification.applicationIconBadgeNumber = 1
             UIApplication.sharedApplication().scheduleLocalNotification(notification)
         }
 

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		283E2FAD1CCFAE6D00BB6BBB /* ChangeSleepSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283E2FAC1CCFAE6D00BB6BBB /* ChangeSleepSchedule.swift */; };
+		283E2FB61CCFBD8900BB6BBB /* ChangeNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283E2FB51CCFBD8900BB6BBB /* ChangeNotifications.swift */; };
 		44563D78DF4EFFA27AB36B71 /* Pods_1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD7F374CE6BBEDFE7045F076 /* Pods_1.framework */; };
 		6B241BA71C972170004FCE4C /* HorizontalBarChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B241BA41C972170004FCE4C /* HorizontalBarChartViewController.swift */; };
 		6B354A531CC95F6600BF819C /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28B5DCB61CC6CDD700862BC1 /* Charts.framework */; };
@@ -157,6 +159,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		283E2FAC1CCFAE6D00BB6BBB /* ChangeSleepSchedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeSleepSchedule.swift; sourceTree = "<group>"; };
+		283E2FB51CCFBD8900BB6BBB /* ChangeNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeNotifications.swift; sourceTree = "<group>"; };
 		28B5DCAE1CC6CDD700862BC1 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = Charts/Charts.xcodeproj; sourceTree = "<group>"; };
 		59289482031957F7F549FA4C /* Pods-1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-1.release.xcconfig"; path = "Pods/Target Support Files/Pods-1/Pods-1.release.xcconfig"; sourceTree = "<group>"; };
 		6B1397B91CBF9CB7000C360E /* 1Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 1Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -377,6 +381,7 @@
 		6BF20CE61C8D8D680052FB0D /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				283E2FAC1CCFAE6D00BB6BBB /* ChangeSleepSchedule.swift */,
 				6BB0FB5B1CC0D0FF00653E12 /* RevealViewControllerLicense.swift */,
 				6BB0FB5D1CC0D3A000653E12 /* ChartsLicense.swift */,
 				6B241BA11C972153004FCE4C /* Graphs */,
@@ -388,6 +393,7 @@
 				6BB0FB591CC0BF1200653E12 /* CopyrightsViewController.swift */,
 				6BA76C021C923CED00AC941A /* LogIn.swift */,
 				6B8B10C11C87548000CC21BA /* NotificationsSettings.swift */,
+				283E2FB51CCFBD8900BB6BBB /* ChangeNotifications.swift */,
 				6B6CBA4B1C8B3BA6004DDC71 /* Notification Information.swift */,
 				6B3D6BA61C8EC32F00FCDAFF /* Settings.swift */,
 				6B48B4121CCCBB0F0002A9D3 /* Menu.swift */,
@@ -698,10 +704,12 @@
 				6B6CBA5C1C8C5D1C004DDC71 /* Gender.swift in Sources */,
 				6BD3EF831C858A2100DB6601 /* AppDelegate.swift in Sources */,
 				6BCA621D1C956CD30071B527 /* SurveyPage1.swift in Sources */,
+				283E2FB61CCFBD8900BB6BBB /* ChangeNotifications.swift in Sources */,
 				6B6CBA4C1C8B3BA6004DDC71 /* Notification Information.swift in Sources */,
 				6BCA62191C94D0D90071B527 /* divertedYourAttention.swift in Sources */,
 				6BCA62181C94D0D90071B527 /* areYouCurrently.swift in Sources */,
 				6BCA621A1C94D0D90071B527 /* hasAnythingDivertedYourAttention.swift in Sources */,
+				283E2FAD1CCFAE6D00BB6BBB /* ChangeSleepSchedule.swift in Sources */,
 				6BBE20B31C9ED7DA0058F410 /* SurveyPage3.swift in Sources */,
 				6BFC4B3A1C9D7EDA003DD657 /* ViewController.swift in Sources */,
 				6BB0FB5C1CC0D0FF00653E12 /* RevealViewControllerLicense.swift in Sources */,

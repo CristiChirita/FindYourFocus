@@ -15,6 +15,7 @@ var EMAIL: String?
 var PASSWORD: String?
 var NOTIFICATIONS: Int?
 var SAMPLENO: Int?
+var notificationfired = false
 
 let userData = NSUserDefaults.standardUserDefaults();
 let ref = Firebase (url: "https://testyourfocus.firebaseio.com")
@@ -37,6 +38,7 @@ struct Keys {
     static let INTERVALMIDDLES = "Interval";
     static let INTERVALERROR = "Error";
     static let TOTALFOCUS = "TotalFocus";
+    static let SIGNUPCOMPLETED = "SignUpCompleted";
 }
 
 @UIApplicationMain
@@ -85,6 +87,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+        if UIApplication.sharedApplication().applicationIconBadgeNumber != 0
+        {
+            notificationfired = true
+        }
     }
 
     func applicationDidBecomeActive(application: UIApplication) {

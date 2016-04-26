@@ -28,6 +28,8 @@ class Menu: UITableViewController {
             UIApplication.sharedApplication().cancelLocalNotification(notification)
         }
         ref.unauth()
+        userData.setObject(nil, forKey: Keys.UID)
+        userData.synchronize()
         self.performSegueWithIdentifier("signOut", sender: sender)
     }
 }

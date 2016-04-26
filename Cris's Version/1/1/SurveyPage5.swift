@@ -42,6 +42,8 @@ class SurveyPage5: UIViewController {
         {
             scheduleNotifications()
         }
+        UIApplication.sharedApplication().applicationIconBadgeNumber = 0
+        notificationfired = false
     }
 
     func scheduleNotifications()
@@ -74,6 +76,7 @@ class SurveyPage5: UIViewController {
             notification.alertAction = "open"
             notification.fireDate = notificationTime!
             notification.soundName = UILocalNotificationDefaultSoundName
+            notification.applicationIconBadgeNumber = 1
             UIApplication.sharedApplication().scheduleLocalNotification(notification)
         }
         

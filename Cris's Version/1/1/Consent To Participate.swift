@@ -114,6 +114,9 @@ class Consent_To_Participate: UIViewController {
             //userData.synchronize()
         }
         scheduleNotifications()
+        userData.setBool(true, forKey: Keys.SIGNUPCOMPLETED)
+        userData.synchronize()
+        notificationfired = true
     }
 
     @IBAction func click(sender: UIButton) {
@@ -179,6 +182,7 @@ class Consent_To_Participate: UIViewController {
             notification.alertAction = "open"
             notification.fireDate = notificationTime!
             notification.soundName = UILocalNotificationDefaultSoundName
+            notification.applicationIconBadgeNumber = 1
             UIApplication.sharedApplication().scheduleLocalNotification(notification)
         }
         
