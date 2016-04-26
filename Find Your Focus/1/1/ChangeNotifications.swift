@@ -34,9 +34,18 @@ class ChangeNotifications: UIViewController {
         Note.text = " "
         
         question.text = "How many times a day would you like to receive questions?"
-        
+        print(userData.integerForKey(Keys.NOTIFICATIONS)-1)
+        if (userData.integerForKey(Keys.NOTIFICATIONS)-1 < 0)
+        {
         number.text = pickerDataSource[userData.integerForKey(Keys.NOTIFICATIONS)-1]
-
+        }
+        else
+        {
+            number.text = pickerDataSource[2]
+            didChange = true
+            userData.setInteger(3, forKey: Keys.NOTIFICATIONS)
+            userData.synchronize()
+        }
         // Do any additional setup after loading the view.
     }
 

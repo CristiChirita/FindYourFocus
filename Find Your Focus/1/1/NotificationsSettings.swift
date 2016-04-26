@@ -64,6 +64,7 @@ class NotificationsSettings: UIViewController, UIPickerViewDataSource, UIPickerV
         print(row)
         userData.setInteger(row + 1 , forKey: Keys.NOTIFICATIONS)
         userData.synchronize()
+        backupRef.childByAppendingPath(userData.stringForKey(Keys.UID)).updateChildValues([Keys.NOTIFICATIONS : row+1])
         didChange = true
         
     }

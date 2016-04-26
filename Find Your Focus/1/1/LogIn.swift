@@ -154,6 +154,7 @@ class LogIn: UIViewController, UITextFieldDelegate {
                 let wakeUp = snapshot.value[Keys.WAKEUP] as! String
                 let sleep = snapshot.value[Keys.SLEEP] as! String
                 let error = snapshot.value[Keys.INTERVALERROR] as! Int
+                let notifications = snapshot.value[Keys.NOTIFICATIONS] as! Int
                 //print(age)
                 let dateFormatter = NSDateFormatter()
                 dateFormatter.dateFormat = "hh:mm a"
@@ -168,6 +169,9 @@ class LogIn: UIViewController, UITextFieldDelegate {
                 userData.setObject(dateFormatter.dateFromString(sleep), forKey: Keys.SLEEP)
                 userData.synchronize()
                 userData.setInteger(error, forKey: Keys.INTERVALERROR)
+                userData.synchronize()
+                userData.setInteger(notifications, forKey: Keys.NOTIFICATIONS)
+                userData.synchronize()
                 if age >= 18
                 {
                     let over18 = ["Resting or sleeping", "Walking", "Watching TV, film, online videos", "News watching", "Listening to music", "Listening to a radio program", "Gaming", "Playing board games", "Childcare", "Playing Sport", "Working", "Studying", "Intimate relations", "Exercising", "Eating", "Reading (books, paper, online)", "Cooking", "Praying or meditating", "Online Chatting", "Email", "Surfing the net", "Engaging with family member", "Engaging with friends", "Shopping, running errands", "Household admin", "Travelling"]

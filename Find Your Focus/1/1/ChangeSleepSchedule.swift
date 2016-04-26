@@ -53,6 +53,10 @@ class ChangeSleepSchedule: UIViewController {
         
         dateFormatter.dateFormat = "hh:mm a"
         
+        wakeUpTimeSelect.date = (userData.objectForKey(Keys.WAKEUP) as! NSDate).dateByAddingTimeInterval(-30*60)
+        sleepTimeSelect.date = (userData.objectForKey(Keys.SLEEP) as! NSDate).dateByAddingTimeInterval(30*60)
+
+        
         wakeUp.text = dateFormatter.stringFromDate((userData.objectForKey(Keys.WAKEUP) as! NSDate).dateByAddingTimeInterval(-30*60))
         sleep.text = dateFormatter.stringFromDate((userData.objectForKey(Keys.SLEEP) as! NSDate).dateByAddingTimeInterval(30*60))
 
@@ -148,6 +152,16 @@ class ChangeSleepSchedule: UIViewController {
         dateFormatter.dateFormat = "hh:mm a"
         let wakeUpInitial = dateFormatter.stringFromDate((userData.objectForKey(Keys.WAKEUP) as! NSDate).dateByAddingTimeInterval(-30*60))
         let sleepInitial = dateFormatter.stringFromDate((userData.objectForKey(Keys.SLEEP) as! NSDate).dateByAddingTimeInterval(30*60))
+        /*let sleepDate = (userData.objectForKey(Keys.SLEEP) as! NSDate).dateByAddingTimeInterval(30*60)
+        let wakeUpDate = (userData.objectForKey(Keys.WAKEUP) as! NSDate).dateByAddingTimeInterval(-30*60)
+        print(sleepDate.timeIntervalSinceDate(wakeUpDate))*/
+        let sleepDate = dateFormatter.dateFromString(sleep.text!)!
+        let wakeUpDate = dateFormatter.dateFromString(wakeUp.text!)!
+        print(sleepDate.timeIntervalSinceDate(wakeUpDate))
+        if (sleepDate.timeIntervalSinceDate(wakeUpDate)<2*60*60)
+        {
+            return
+        }
         if (wakeUp.text! != wakeUpInitial || sleep.text! != sleepInitial)
         {
 
