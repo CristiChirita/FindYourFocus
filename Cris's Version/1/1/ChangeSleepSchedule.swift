@@ -60,7 +60,7 @@ class ChangeSleepSchedule: UIViewController {
     }
     
     
-    @IBAction func wakeUpTimeChanged(sender: AnyObject) {
+    @IBAction func wakeUpTimeChanged(sender: UIDatePicker) {
         
         let strDate = dateFormatter.stringFromDate(sender.date)
         wakeUp.text = strDate
@@ -77,7 +77,7 @@ class ChangeSleepSchedule: UIViewController {
     }
     
     
-    @IBAction func sleepTimeChanged(sender: AnyObject) {
+    @IBAction func sleepTimeChanged(sender: UIDatePicker) {
         let strDate = dateFormatter.stringFromDate(sender.date)
         sleep.text = strDate
         
