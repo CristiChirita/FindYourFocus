@@ -18,7 +18,7 @@ var SAMPLENO: Int?
 var notificationfired = false
 
 let userData = NSUserDefaults.standardUserDefaults();
-let ref = Firebase (url: "https://testfocusii.firebaseio.com")
+let ref = Firebase (url: "https://findyourfocus.firebaseio.com")
 let backupRef = ref.childByAppendingPath("Backup")
 
 
