@@ -112,6 +112,7 @@ class LogIn: UIViewController, UITextFieldDelegate {
                             userData.setObject(self.password.text!, forKey: Keys.PASSWORD)
                             userData.synchronize()
                             self.syncronise()
+                            UIApplication.sharedApplication().applicationIconBadgeNumber = 0;
                             let now = NSDate()
                             var scheduledNotifications = false
                             let notificationList = UIApplication.sharedApplication().scheduledLocalNotifications!

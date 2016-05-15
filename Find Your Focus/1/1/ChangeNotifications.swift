@@ -20,7 +20,7 @@ class ChangeNotifications: UIViewController {
     
     @IBOutlet weak var numberOfNotifications: UIPickerView!
     
-    var didChange = false
+    var didChange : Bool?
     
     let defaultNotificationsNumber = 3
     
@@ -29,19 +29,23 @@ class ChangeNotifications: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundImage.png")!)
         
-        numberOfNotifications.selectRow(2, inComponent: 0, animated: true)
+        //numberOfNotifications.selectRow(2, inComponent: 0, animated: true)
+        
+        didChange = false
         
         Note.text = " "
         
         question.text = "How many times a day would you like to receive questions?"
         print(userData.integerForKey(Keys.NOTIFICATIONS)-1)
-        if (userData.integerForKey(Keys.NOTIFICATIONS)-1 < 0)
+        if (userData.integerForKey(Keys.NOTIFICATIONS)-1 >= 0)
         {
         number.text = pickerDataSource[userData.integerForKey(Keys.NOTIFICATIONS)-1]
+        numberOfNotifications.selectRow(userData.integerForKey(Keys.NOTIFICATIONS)-1, inComponent: 0, animated: true)
         }
         else
         {
             number.text = pickerDataSource[2]
+            numberOfNotifications.selectRow(2, inComponent: 0, animated: true)
             didChange = true
             userData.setInteger(3, forKey: Keys.NOTIFICATIONS)
             userData.synchronize()

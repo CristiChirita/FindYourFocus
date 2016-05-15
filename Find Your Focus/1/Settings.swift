@@ -58,6 +58,7 @@ class Settings: UIViewController, UITableViewDelegate {
                         {
                             UIApplication.sharedApplication().cancelLocalNotification(notification)
                         }
+                        UIApplication.sharedApplication().applicationIconBadgeNumber = 0
                         ref.unauth()
                     }
             })

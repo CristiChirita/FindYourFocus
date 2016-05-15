@@ -30,6 +30,7 @@ class Menu: UITableViewController {
         ref.unauth()
         userData.setObject(nil, forKey: Keys.UID)
         userData.synchronize()
+        UIApplication.sharedApplication().applicationIconBadgeNumber = 0
         self.performSegueWithIdentifier("signOut", sender: sender)
     }
 }
